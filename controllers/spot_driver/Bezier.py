@@ -1,5 +1,6 @@
 import numpy as np
 from LieAlgebra import TransToRp
+import math
 import copy
 
 STANCE = 0
@@ -185,8 +186,8 @@ class BezierGait():
            :param k: Bezier point number
            :returns: Binomial solution
         """
-        return np.math.factorial(self.NumBezierPoints) / (
-            np.math.factorial(k) * np.math.factorial(self.NumBezierPoints - k))
+        return math.factorial(self.NumBezierPoints) / (
+            math.factorial(k) * math.factorial(self.NumBezierPoints - k))
 
     def BezierSwing(self, phase, L, LateralFraction, clearance_height=0.04):
         """Calculates the step coordinates for the Bezier (swing) period
