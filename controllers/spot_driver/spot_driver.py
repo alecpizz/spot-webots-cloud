@@ -1,6 +1,7 @@
 # from scipy.spatial.transform import Rotation as R
 import numpy as np
 import copy
+import time
 import json
 
 from SpotKinematics import SpotModel
@@ -245,6 +246,55 @@ class SpotDriver:
         self.YawControl = YawControl
         self.YawControlOn = YawControlOn
 
+    def cmd_vel(self, linearx, lineary, angularz):
+        # Override motion command
+        self.fixed_motion = False
+
+        StepLength = 0.15
+        ClearanceHeight = 0.015
+        PenetrationDepth = 0.003
+        SwingPeriod = 0.3
+        YawControl = 0.0
+        YawControlOn = 0.0
+        StepVelocity = 0.8
+
+        self.xd = 0.
+        self.yd = 0.
+        # self.zd = 0.
+        self.rolld = 0.
+        self.pitchd = 0.
+        self.yawd = 0.
+        self.StepLength = StepLength * linearx
+
+        # Rotation along vertical axis
+        self.YawRate = angularz
+        if self.YawRate != 0 and self.StepLength == 0:
+            self.StepLength = StepLength * 0.1
+
+        # Holonomic motions
+        self.LateralFraction = np.arctan2(lineary, linearx)
+        # forcefully set 0, as output is never 0 if second term in arctan2 is -ve
+        if lineary == 0:
+            self.LateralFraction = 0
+        if self.LateralFraction != 0:
+            if linearx != 0:
+                # change lateral fraction for 2nd and 4th quadrants
+                if linearx > 0 and self.LateralFraction < 0:
+                    self.LateralFraction += np.pi
+                elif linearx < 0 and self.LateralFraction > 0:
+                    self.LateralFraction -= np.pi
+                self.StepLength = StepLength * lineary * np.sign(linearx)
+            else:
+                # for sideway motion
+                self.StepLength = StepLength * abs(lineary)
+
+        self.StepVelocity = StepVelocity
+        self.ClearanceHeight = ClearanceHeight
+        self.PenetrationDepth = PenetrationDepth
+        self.SwingPeriod = SwingPeriod
+        self.YawControl = YawControl
+        self.YawControlOn = YawControlOn
+
     def __talker(self, motors_target_pos):
         motor_offsets = [0, 0.52, -1.182]
         for idx, motor in enumerate(self.motors):
@@ -479,25 +529,50 @@ class SpotDriver:
 
 spot = SpotDriver()
 
-while spot.robot.step(spot.timestep) != -1:
-    message = spot.robot.wwiReceiveText()
-    if message is not None:
-        # Print the message if not None
-        if ":" in message:
-            cmd_vel = json.loads(message)
-            spot.cmd_vel(cmd_vel)
-
-    if spot.fixed_motion:
-        spot.defined_motions()
-    else:
+def move_in_direction_for_duration(linear_x: float = 0.0, linear_y: float = 0.0,
+                                   angular_z: float = 0.0, move_time: float = 0.0):
+    end_time = time.time() + move_time
+    while spot.robot.step(spot.timestep) != -1 and time.time() < end_time:
+        spot.cmd_vel(linear_x, linear_y, angular_z)
         spot.spot_inverse_control()
+        spot.model_cb()
 
-    if spot.gripper_close:
-        for idx, motor in enumerate(spot.gripper_motors):
-            motor.setPosition([0.02, 0.02][idx])
-    else:
-        for idx, motor in enumerate(spot.gripper_motors):
-            motor.setPosition([0.045, 0.045][idx])
+def move_forward(move_time):
+    move_in_direction_for_duration(0.5, 0.0, 0.0, move_time)
+
+def move_backward(move_time):
+    move_in_direction_for_duration(-0.5, 0.0, 0.0, move_time)
+
+def turn_left(move_time):
+    move_in_direction_for_duration(0.0, 0.0, 0.5, move_time)
+
+def turn_right(move_time):
+    move_in_direction_for_duration(0.0, 0.0, -0.5, move_time)
+
+def move_forward_and_right(move_time):
+    move_in_direction_for_duration(0.5, -0.5, 0.0, move_time)
+
+def move_forward_and_left(move_time):
+    move_in_direction_for_duration(0.5, 0.5, 0.0, move_time)
+
+def move_backward_and_right(move_time):
+    move_in_direction_for_duration(-0.5, -0.5, 0.0, move_time)
+
+def move_backward_and_left(move_time):
+    move_in_direction_for_duration(-0.5, 0.5, 0.0, move_time)
+
+def stop_moving(move_time):
+    move_in_direction_for_duration(0.0, 0.0, 0.0, move_time)
 
     #Update Spot state
-    spot.model_cb()
+if spot.gripper_close:
+    for idx, motor in enumerate(spot.gripper_motors):
+        motor.setPosition([0.02, 0.02][idx])
+else:
+    for idx, motor in enumerate(spot.gripper_motors):
+        motor.setPosition([0.045, 0.045][idx])
+spot.robot.step(spot.timestep * 10)
+
+
+move_forward(5)
+turn_left(2)
