@@ -1,14 +1,12 @@
-#VRML_SIM R2023a utf8
+#VRML_SIM R2023b utf8
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/RectangleArena.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/appearances/protos/ThreadMetalPlate.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/appearances/protos/Roughcast.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/solids/protos/SolidBox.proto"
 EXTERNPROTO "../protos/Spot.proto"
 EXTERNPROTO "../protos/SpotArm.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/devices/robotiq/protos/Robotiq3fGripper.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/devices/microsoft/protos/Kinect.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/devices/sick/protos/SickS300.proto"
 
@@ -43,7 +41,6 @@ SolidBox {
   name "arena_wall_1"
   size 0.03 4 1.7
   appearance PBRAppearance {
-    baseColor 1 1 1
     roughness 0.5
     metalness 0
   }
@@ -157,13 +154,13 @@ SolidBox {
 DEF Spot Spot {
   translation 8.39 0.11 0.6
   rotation 0 0 1 -3.14159
-  controller "spot_driver"
+  controller "spot_controller"
   window "spot_controller"
   supervisor TRUE
   frontExtension [
     SpotArm {
       translation 0 0 -0.094
-      rotation -0.577351 0.577348 0.577352 2.0944
+      rotation -0.5773509358537164 0.5773479358540498 0.5773519358536053 2.0944
       gripperCam [
         Camera {
           translation 0.19 0 0

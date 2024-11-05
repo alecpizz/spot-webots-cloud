@@ -2,7 +2,6 @@
 import numpy as np
 import copy
 import time
-import json
 
 from SpotKinematics import SpotModel
 from Bezier import BezierGait
@@ -180,12 +179,12 @@ class SpotDriver:
         self.allow_new_target = False
         self.gripper_close = False
 
-    def model_cb(self):
+    def __model_cb(self):
         spot_rot = self.spot_node.getField("rotation")
         spot_rot_val = spot_rot.getSFRotation()
         self.yaw_inst = spot_rot_val[2]
 
-    def yaw_control(self):
+    def _yaw_control(self):
         """ Yaw body controller"""
         yaw_target = self.YawControl
         thr = np.pi / 2
@@ -197,56 +196,8 @@ class SpotDriver:
             yawrate_d = 4.0 * np.sqrt(abs(residual)) * np.sign(residual)
         return yawrate_d
 
-    def cmd_vel(self, msg):
-        # Override motion command
-        self.fixed_motion = False
 
-        StepLength = 0.15
-        ClearanceHeight = 0.015
-        PenetrationDepth = 0.003
-        SwingPeriod = 0.3
-        YawControl = 0.0
-        YawControlOn = 0.0
-        StepVelocity = 0.8
-
-        self.xd = 0.
-        self.yd = 0.
-        # self.zd = 0.
-        self.rolld = 0.
-        self.pitchd = 0.
-        self.yawd = 0.
-        self.StepLength = StepLength * msg['linear']['x']
-        
-        # Rotation along vertical axis
-        self.YawRate = msg['angular']['z']
-        if self.YawRate != 0 and self.StepLength == 0:
-            self.StepLength = StepLength * 0.1
-
-        # Holonomic motions
-        self.LateralFraction = np.arctan2(msg['linear']['y'], msg['linear']['x'])
-        # forcefully set 0, as output is never 0 if second term in arctan2 is -ve
-        if msg['linear']['y'] == 0:
-            self.LateralFraction = 0
-        if self.LateralFraction != 0:
-            if msg['linear']['x'] != 0:
-                # change lateral fraction for 2nd and 4th quadrants
-                if msg['linear']['x'] > 0 and self.LateralFraction < 0:
-                    self.LateralFraction += np.pi
-                elif msg['linear']['x'] < 0 and self.LateralFraction > 0:
-                    self.LateralFraction -= np.pi
-                self.StepLength = StepLength * msg['linear']['y'] * np.sign(msg['linear']['x'])
-            else:
-                # for sideway motion
-                self.StepLength = StepLength * abs(msg['linear']['y'])
-
-        self.StepVelocity = StepVelocity
-        self.ClearanceHeight = ClearanceHeight
-        self.PenetrationDepth = PenetrationDepth
-        self.SwingPeriod = SwingPeriod
-        self.YawControl = YawControl
-        self.YawControlOn = YawControlOn
-
-    def cmd_vel(self, linearx, lineary, angularz):
+    def _cmd_vel(self, linearx, lineary, angularz):
         # Override motion command
         self.fixed_motion = False
 
@@ -300,7 +251,7 @@ class SpotDriver:
         for idx, motor in enumerate(self.motors):
             motor.setPosition(motor_offsets[idx % 3] + motors_target_pos[idx])
 
-    def spot_inverse_control(self):
+    def __spot_inverse_control(self):
         self.front_left_lower_leg_contact = self.touch_fl.getValue()
         self.front_right_lower_leg_contact = self.touch_fr.getValue()
         self.rear_left_lower_leg_contact = self.touch_rl.getValue()
@@ -311,7 +262,7 @@ class SpotDriver:
 
         # yaw controller
         if self.YawControlOn == 1.0:
-            YawRate_desired = self.yaw_control()
+            YawRate_desired = self._yaw_control()
         else:
             YawRate_desired = self.YawRate
 
@@ -337,7 +288,7 @@ class SpotDriver:
 
         self.__talker(target)
 
-    def handle_transforms_and_odometry(self):
+    def __handle_transforms_and_odometry(self):
         for idx, motor_sensor in enumerate(self.motor_sensors):
             self.motors_pos[idx] = motor_sensor.getValue()
 
@@ -352,7 +303,7 @@ class SpotDriver:
         for idx, gripper_sensor in enumerate(self.remaining_gripper_sensors):
             self.remaining_gripper_pos[idx] = gripper_sensor.getValue()
 
-    def movement_decomposition(self, target, duration):
+    def __movement_decomposition(self, target, duration):
         """
         Decompose big motion into smaller motions
         """
@@ -371,7 +322,7 @@ class SpotDriver:
 
         self.paw = False
         self.paw2 = False
-        self.movement_decomposition(motions['stand'], 1)
+        self.__movement_decomposition(motions['stand'], 1)
         response.answer = 'standing up'
         return response
 
@@ -383,7 +334,7 @@ class SpotDriver:
 
         self.paw = False
         self.paw2 = False
-        self.movement_decomposition(motions['sit'], 1)
+        self.__movement_decomposition(motions['sit'], 1)
         response.answer = 'sitting down'
         return response
 
@@ -395,7 +346,7 @@ class SpotDriver:
 
         self.paw = False
         self.paw2 = False
-        self.movement_decomposition(motions['lie'], 1)
+        self.__movement_decomposition(motions['lie'], 1)
         response.answer = 'lying down'
         return response
 
@@ -406,7 +357,7 @@ class SpotDriver:
             return response
 
         # Start handshake motion
-        self.movement_decomposition([-0.20, -0.30, 0.05,
+        self.__movement_decomposition([-0.20, -0.30, 0.05,
                                         0.20, -0.40, -0.19,
                                         -0.40, -0.90, 1.18,
                                         0.49, -0.90, 0.80], 1)
@@ -414,8 +365,8 @@ class SpotDriver:
         response.answer = 'shaking hands'
         return response
 
-    def defined_motions(self):
-        self.handle_transforms_and_odometry() # Let the sensor values get updated
+    def __defined_motions(self):
+        self.__handle_transforms_and_odometry() # Let the sensor values get updated
         if self.n_steps_to_achieve_target > 0:
             if not self.m_target:
                 self.m_target = [self.step_difference[i] + self.motors_pos[i] for i in range(NUMBER_OF_JOINTS)]
@@ -444,7 +395,7 @@ class SpotDriver:
                 self.motors[5].setPosition(0.4 * np.sin(2 * self.robot.getTime()))
             else:
                 self.paw2 = False # Sit back again
-                self.movement_decomposition([-0.20, -0.40, -0.19,
+                self.__movement_decomposition([-0.20, -0.40, -0.19,
                                               0.20, -0.40, -0.19,
                                              -0.40, -0.90, 1.18,
                                               0.40, -0.90, 1.18], 1)
@@ -514,9 +465,9 @@ class SpotDriver:
                                        angular_z: float = 0.0, move_time: float = 0.0):
         end_time = time.time() + move_time
         while self.robot.step(self.timestep) != -1 and time.time() < end_time:
-            self.cmd_vel(linear_x, linear_y, angular_z)
-            self.spot_inverse_control()
-            self.model_cb()
+            self._cmd_vel(linear_x, linear_y, angular_z)
+            self.__spot_inverse_control()
+            self.__model_cb()
 
     def move_forward(self, move_time):
         self.move_in_direction_for_duration(0.5, 0.0, 0.0, move_time)
