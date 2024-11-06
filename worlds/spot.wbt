@@ -5,17 +5,13 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/appearances/protos/ThreadMetalPlate.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/appearances/protos/Roughcast.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/solids/protos/SolidBox.proto"
-EXTERNPROTO "../protos/Spot.proto"
-EXTERNPROTO "../protos/SpotArm.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/devices/microsoft/protos/Kinect.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/devices/sick/protos/SickS300.proto"
 
 WorldInfo {
   title "Spot_Maze"
 }
 Viewpoint {
-  orientation -0.3514025745846757 -0.08398531544295117 0.9324498363800645 3.580145909966252
-  position 20.0206486298158 10.533063907228222 19.231879117926756
+  orientation -0.22111396764856026 -0.15458860520907072 0.9629179489708485 4.552969459161523
+  position 7.128750211253756 8.222539759519558 3.9025538333321976
 }
 TexturedBackground {
   texture "factory"
@@ -151,36 +147,4318 @@ SolidBox {
     metalness 0
   }
 }
-DEF Spot Spot {
+DEF Spot Robot {
   translation 8.39 0.11 0.6
   rotation 0 0 1 -3.14159
-  controller "spot_controller"
-  window "spot_controller"
-  supervisor TRUE
-  frontExtension [
-    SpotArm {
-      translation 0 0 -0.094
-      rotation -0.5773509358537164 0.5773479358540498 0.5773519358536053 2.0944
-      gripperCam [
+  children [
+    Accelerometer {
+    }
+    GPS {
+    }
+    Gyro {
+    }
+    InertialUnit {
+    }
+    LED {
+      translation 0.505323 0.081967 0.050721
+      rotation 0.8687333787691388 0.48061220954768996 0.11964205216412557 1.875866
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+              ]
+              filtering 5
+            }
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/glossy_car_paint/glossy_car_paint_roughness.jpg"
+              ]
+              filtering 5
+            }
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/glossy_car_paint/glossy_car_paint_normal.jpg"
+              ]
+              filtering 5
+            }
+            normalMapFactor 0.5
+            textureTransform TextureTransform {
+              scale 10 10
+            }
+          }
+          geometry Box {
+            size 0.005 0.01375 0.002
+          }
+        }
+      ]
+      name "left top led"
+      color [
+        0 1 0
+        1 1 0
+        1 0 0
+      ]
+    }
+    LED {
+      translation 0.497601 0.081967 0.034491
+      rotation 0.8687333787691388 0.48061220954768996 0.11964205216412557 1.875866
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+              ]
+              filtering 5
+            }
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/glossy_car_paint/glossy_car_paint_roughness.jpg"
+              ]
+              filtering 5
+            }
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/glossy_car_paint/glossy_car_paint_normal.jpg"
+              ]
+              filtering 5
+            }
+            normalMapFactor 0.5
+            textureTransform TextureTransform {
+              scale 10 10
+            }
+          }
+          geometry Box {
+            size 0.005 0.01375 0.002
+          }
+        }
+      ]
+      name "left middle up led"
+      color [
+        0 1 0
+        1 1 0
+        1 0 0
+      ]
+    }
+    LED {
+      translation 0.489879 0.081966 0.018291
+      rotation 0.8687333787691388 0.48061220954768996 0.11964205216412557 1.875866
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+              ]
+              filtering 5
+            }
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/glossy_car_paint/glossy_car_paint_roughness.jpg"
+              ]
+              filtering 5
+            }
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/glossy_car_paint/glossy_car_paint_normal.jpg"
+              ]
+              filtering 5
+            }
+            normalMapFactor 0.5
+            textureTransform TextureTransform {
+              scale 10 10
+            }
+          }
+          geometry Box {
+            size 0.005 0.01375 0.002
+          }
+        }
+      ]
+      name "left middle down led"
+      color [
+        0 1 0
+        1 1 0
+        1 0 0
+      ]
+    }
+    LED {
+      translation 0.505323 -0.081963 0.050723
+      rotation 0.8394537590747071 -0.1190399658352371 -0.5302328478218689 1.585161
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+              ]
+              filtering 5
+            }
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/glossy_car_paint/glossy_car_paint_roughness.jpg"
+              ]
+              filtering 5
+            }
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/glossy_car_paint/glossy_car_paint_normal.jpg"
+              ]
+              filtering 5
+            }
+            normalMapFactor 0.5
+            textureTransform TextureTransform {
+              scale 10 10
+            }
+          }
+          geometry Box {
+            size 0.005 0.01375 0.002
+          }
+        }
+      ]
+      name "right top led"
+      color [
+        0 1 0
+        1 1 0
+        1 0 0
+      ]
+    }
+    LED {
+      translation 0.497601 -0.081963 0.034493
+      rotation 0.8394537590747071 -0.1190399658352371 -0.5302328478218689 1.585161
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+              ]
+              filtering 5
+            }
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/glossy_car_paint/glossy_car_paint_roughness.jpg"
+              ]
+              filtering 5
+            }
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/glossy_car_paint/glossy_car_paint_normal.jpg"
+              ]
+              filtering 5
+            }
+            normalMapFactor 0.5
+            textureTransform TextureTransform {
+              scale 10 10
+            }
+          }
+          geometry Box {
+            size 0.005 0.01375 0.002
+          }
+        }
+      ]
+      name "right middle up led"
+      color [
+        0 1 0
+        1 1 0
+        1 0 0
+      ]
+    }
+    LED {
+      translation 0.489879 -0.081963 0.018293
+      rotation 0.8394537590747071 -0.1190399658352371 -0.5302328478218689 1.585161
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+              ]
+              filtering 5
+            }
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/glossy_car_paint/glossy_car_paint_roughness.jpg"
+              ]
+              filtering 5
+            }
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/glossy_car_paint/glossy_car_paint_normal.jpg"
+              ]
+              filtering 5
+            }
+            normalMapFactor 0.5
+            textureTransform TextureTransform {
+              scale 10 10
+            }
+          }
+          geometry Box {
+            size 0.005 0.01375 0.002
+          }
+        }
+      ]
+      name "right middle down led"
+      color [
+        0 1 0
+        1 1 0
+        1 0 0
+      ]
+    }
+    LED {
+      translation 0.481728 -0.081963 0.001193
+      rotation 0.8394537590747071 -0.1190399658352371 -0.5302328478218689 1.585161
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+              ]
+              filtering 5
+            }
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/glossy_car_paint/glossy_car_paint_roughness.jpg"
+              ]
+              filtering 5
+            }
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/glossy_car_paint/glossy_car_paint_normal.jpg"
+              ]
+              filtering 5
+            }
+            normalMapFactor 0.5
+            textureTransform TextureTransform {
+              scale 10 10
+            }
+          }
+          geometry Box {
+            size 0.005 0.01375 0.002
+          }
+        }
+      ]
+      name "right bottom led"
+      color [
+        0 1 0
+        1 1 0
+        1 0 0
+      ]
+    }
+    LED {
+      translation 0.481728 0.081967 0.001191
+      rotation 0.8687333787691388 0.48061220954768996 0.11964205216412557 1.875866
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+              ]
+              filtering 5
+            }
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/glossy_car_paint/glossy_car_paint_roughness.jpg"
+              ]
+              filtering 5
+            }
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/glossy_car_paint/glossy_car_paint_normal.jpg"
+              ]
+              filtering 5
+            }
+            normalMapFactor 0.5
+            textureTransform TextureTransform {
+              scale 10 10
+            }
+          }
+          geometry Box {
+            size 0.005 0.01375 0.002
+          }
+        }
+      ]
+      name "left bottom led"
+      color [
+        0 1 0
+        1 1 0
+        1 0 0
+      ]
+    }
+    DEF HEAD_SHAPES Pose {
+      translation -0.459994 -1.9e-05 -1.650002
+      rotation 0.5773502691803881 -0.5773542691822531 -0.5773462691785233 2.094389
+      children [
+        DEF HEAD_COVER Shape {
+          appearance DEF YELLOW_COVER PBRAppearance {
+            baseColor 0.847059 0.666667 0
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+              ]
+              filtering 5
+            }
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_roughness.jpg"
+              ]
+              filtering 5
+            }
+            metalness 0
+            normalMapFactor 0.5
+            textureTransform TextureTransform {
+              scale 10 10
+            }
+          }
+          geometry Mesh {
+            url [
+              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/head_cover.obj"
+            ]
+          }
+        }
+        DEF HEAD_BACKGROUND_HOLES Shape {
+          appearance DEF BLACK_HOLED PBRAppearance {
+            baseColor 0.152941 0.152941 0.152941
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/perforated_metal/perforated_metal_base_color.png"
+              ]
+            }
+            roughness 0.3
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/perforated_metal/perforated_metal_normal.png"
+              ]
+            }
+            textureTransform TextureTransform {
+              scale 4 4
+            }
+          }
+          geometry Mesh {
+            url [
+              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/head_background_holes.obj"
+            ]
+          }
+        }
+        DEF HEAD_BACKGROUND Pose {
+          translation 0 1.657776 -0.905049
+          rotation -1 0 0 0.433185
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.196078 0.196078 0.196078
+                baseColorMap ImageTexture {
+                  url [
+                    "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+                  ]
+                  filtering 5
+                }
+                roughnessMap ImageTexture {
+                  url [
+                    "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_roughness.jpg"
+                  ]
+                  filtering 5
+                }
+                metalness 0
+                normalMapFactor 0.5
+                textureTransform TextureTransform {
+                  scale 10 10
+                }
+              }
+              geometry Box {
+                size 0.14339604 0.16603752 0.001132074
+              }
+            }
+          ]
+        }
         Camera {
-          translation 0.19 0 0
-          name "gripper camera"
-          width 1280
+          translation 0.044898 1.67797 -0.922603
+          rotation 0.4924037995552565 -0.7381056995364216 -0.46123581224293114 -2.507618
+          name "right head camera"
+          width 1080
           height 720
+        }
+        RangeFinder {
+          translation 0.044898 1.67797 -0.922603
+          rotation 0.4924037995552565 -0.7381056995364216 -0.46123581224293114 -2.507618
+          name "right head depth"
+          fieldOfView 1.57
+          width 424
+          height 240
+          maxRange 10
+        }
+        Camera {
+          translation -0.045109 1.67955 -0.92325
+          rotation 0.7767827956855667 -0.5397418580336069 -0.3244799146531949 -2.231426
+          name "left head camera"
+          width 1080
+          height 720
+        }
+        RangeFinder {
+          translation -0.045109 1.67955 -0.92325
+          rotation 0.7767827956855667 -0.5397418580336069 -0.3244799146531949 -2.231426
+          name "left head depth"
+          fieldOfView 1.57
+          width 424
+          height 240
+          maxRange 10
+        }
+        DEF HEAD_CAM_R1 Shape {
+          appearance DEF LENS PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "C:/Users/alecp/Documents/spot-webots-cloud/protos/textures/camera_lens_base_color.jpg"
+              ]
+            }
+            metalness 0
+            textureTransform TextureTransform {
+            }
+          }
+          geometry Mesh {
+            url [
+              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/head_cam_r1.obj"
+            ]
+          }
+        }
+        DEF HEAD_CAM_R2 Shape {
+          appearance DEF BIG_LENS PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "C:/Users/alecp/Documents/spot-webots-cloud/protos/textures/camera_big_lens_base_color.jpg"
+              ]
+            }
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/head_cam_r2.obj"
+            ]
+          }
+        }
+        DEF HEAD_CAM_R3 Shape {
+          appearance DEF TWO_LENS PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "C:/Users/alecp/Documents/spot-webots-cloud/protos/textures/camera_2_lens_base_color.jpg"
+              ]
+            }
+            metalness 0
+            textureTransform TextureTransform {
+              rotation 1.57
+              scale 0.8 0.8
+              translation 0.1 0.1
+            }
+          }
+          geometry Mesh {
+            url [
+              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/head_cam_r3.obj"
+            ]
+          }
+        }
+        DEF HEAD_CAM_L1 Shape {
+          appearance USE LENS
+          geometry Mesh {
+            url [
+              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/head_cam_l1.obj"
+            ]
+          }
+        }
+        DEF HEAD_CAM_L2 Shape {
+          appearance USE BIG_LENS
+          geometry Mesh {
+            url [
+              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/head_cam_l2.obj"
+            ]
+          }
+        }
+        DEF HEAD_CAM_L3 Shape {
+          appearance DEF TWO_LENS_ROTATE PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "C:/Users/alecp/Documents/spot-webots-cloud/protos/textures/camera_2_lens_base_color.jpg"
+              ]
+            }
+            metalness 0
+            textureTransform TextureTransform {
+              rotation -1.57
+              scale 0.8 0.8
+              translation 0.1 0.1
+            }
+          }
+          geometry Mesh {
+            url [
+              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/head_cam_l3.obj"
+            ]
+          }
         }
       ]
     }
-    Kinect {
-      translation 0 -0.007 -0.240831
-      rotation 1 0 0 -0.35
-      foot FALSE
+    DEF BODY_SHAPES Pose {
+      translation -0.459994 -1.9e-05 -1.650002
+      rotation 0.5773502691803881 -0.5773542691822531 -0.5773462691785233 2.094389
+      children [
+        DEF FRONT_SHOULDER_COVER Shape {
+          appearance DEF METAL_PART PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_base_color.jpg"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_roughness.jpg"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_normal.jpg"
+              ]
+            }
+            textureTransform TextureTransform {
+              scale 20 20
+            }
+          }
+          geometry Mesh {
+            url [
+              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/front_shoulder_cover.obj"
+            ]
+          }
+        }
+        DEF REAR_SHOULDER_COVER Shape {
+          appearance USE METAL_PART
+          geometry Mesh {
+            url [
+              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/rear_shoulder_cover.obj"
+            ]
+          }
+        }
+        DEF RIGHT_SIDE Group {
+          children [
+            Camera {
+              translation 0.110163 1.71561 -0.324321
+              rotation -0.9587730792838255 0.2009390166162508 -0.20094201661649888 1.612883
+              name "right flank camera"
+              width 1080
+              height 720
+            }
+            RangeFinder {
+              translation 0.110163 1.71561 -0.324321
+              rotation -0.9587730792838255 0.2009390166162508 -0.20094201661649888 1.612883
+              name "right flank depth"
+              fieldOfView 1.57
+              width 424
+              height 240
+              maxRange 10
+            }
+            DEF RIGHT_FLANK_CAM_1 Shape {
+              appearance USE YELLOW_COVER
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/right_flank_cam_1.obj"
+                ]
+              }
+            }
+            DEF RIGHT_FLANK_CAM_2 Shape {
+              appearance USE TWO_LENS
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/right_flank_cam_2.obj"
+                ]
+              }
+            }
+            DEF RIGHT_FLANK_CAM_3 Shape {
+              appearance USE BIG_LENS
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/right_flank_cam_3.obj"
+                ]
+              }
+            }
+            DEF RIGHT_FLANK_CAM_4 Shape {
+              appearance USE LENS
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/right_flank_cam_4.obj"
+                ]
+              }
+            }
+            DEF RIGHT_FLANK_HOLES Shape {
+              appearance USE BLACK_HOLED
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/right_flank_holes.obj"
+                ]
+              }
+            }
+            DEF RIGHT_FLANK_COVER Shape {
+              appearance USE YELLOW_COVER
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/right_flank_cover.obj"
+                ]
+              }
+            }
+            DEF RIGHT_FLANK_RUBBER Shape {
+              appearance DEF BLACK_PART PBRAppearance {
+                baseColor 0 0 0
+                baseColorMap ImageTexture {
+                  url [
+                    "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+                  ]
+                  filtering 5
+                }
+                roughnessMap ImageTexture {
+                  url [
+                    "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_roughness.jpg"
+                  ]
+                  filtering 5
+                }
+                metalness 0
+                normalMapFactor 0.5
+                textureTransform TextureTransform {
+                  scale 10 10
+                }
+              }
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/right_flank_rubber.obj"
+                ]
+              }
+            }
+          ]
+        }
+        DEF MIDDLE Pose {
+          translation 0 1.700153 -0.488849
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.196078 0.196078 0.196078
+                baseColorMap ImageTexture {
+                  url [
+                    "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+                  ]
+                  filtering 5
+                }
+                roughnessMap ImageTexture {
+                  url [
+                    "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_roughness.jpg"
+                  ]
+                  filtering 5
+                }
+                metalness 0
+                normalMapFactor 0.5
+                textureTransform TextureTransform {
+                  scale 10 10
+                }
+              }
+              geometry Box {
+                size 0.2075469 0.10188666 0.53207478
+              }
+            }
+          ]
+        }
+        DEF LEFT_SIDE Group {
+          children [
+            Camera {
+              translation -0.110127 1.71553 -0.32432
+              rotation -0.1430220753996848 0.69983736894666 0.69983736894666 -2.857471
+              name "left flank camera"
+              width 1080
+              height 720
+            }
+            RangeFinder {
+              translation -0.110127 1.71553 -0.32432
+              rotation -0.1430220753996848 0.69983736894666 0.69983736894666 -2.857471
+              name "left flank depth"
+              fieldOfView 1.57
+              width 424
+              height 240
+              maxRange 10
+            }
+            DEF LEFT_FLANK_CAM_1 Shape {
+              appearance USE YELLOW_COVER
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/left_flank_cam_1.obj"
+                ]
+              }
+            }
+            DEF LEFT_FLANK_CAM_2 Shape {
+              appearance USE TWO_LENS_ROTATE
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/left_flank_cam_2.obj"
+                ]
+              }
+            }
+            DEF LEFT_FLANK_CAM_3 Shape {
+              appearance USE BIG_LENS
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/left_flank_cam_3.obj"
+                ]
+              }
+            }
+            DEF LEFT_FLANK_CAM_4 Shape {
+              appearance USE LENS
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/left_flank_cam_4.obj"
+                ]
+              }
+            }
+            DEF LEFT_FLANK_HOLES Shape {
+              appearance USE BLACK_HOLED
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/left_flank_holes.obj"
+                ]
+              }
+            }
+            DEF LEFT_FLANK_COVER Shape {
+              appearance USE YELLOW_COVER
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/left_flank_cover.obj"
+                ]
+              }
+            }
+            DEF LEFT_FLANK_RUBBER Shape {
+              appearance USE BLACK_PART
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/left_flank_rubber.obj"
+                ]
+              }
+            }
+          ]
+        }
+        DEF BACK_COVER Shape {
+          appearance USE YELLOW_COVER
+          geometry Mesh {
+            url [
+              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/back_cover.obj"
+            ]
+          }
+        }
+        DEF BLACK_BOX_1 Pose {
+          translation 0 1.76 -0.180001
+          rotation 1 0 0 -1.5708003061004252
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                baseColorMap ImageTexture {
+                  url [
+                    "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+                  ]
+                  filtering 5
+                }
+                roughnessMap ImageTexture {
+                  url [
+                    "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_roughness.jpg"
+                  ]
+                  filtering 5
+                }
+                metalness 0
+                normalMapFactor 0.5
+                textureTransform TextureTransform {
+                  scale 10 10
+                }
+              }
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/black_box_1.obj"
+                ]
+              }
+            }
+          ]
+        }
+        DEF BLACK_BOX_1_SCREW Pose {
+          translation 0 1.76 -0.180001
+          rotation 1 0 0 -1.5708003061004252
+          children [
+            Shape {
+              appearance USE METAL_PART
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/black_box_1_screw.obj"
+                ]
+              }
+            }
+          ]
+        }
+        DEF BLACK_BOX_2 Pose {
+          translation 0 1.76 -0.480001
+          rotation 1 0 0 -1.5708003061004252
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                baseColorMap ImageTexture {
+                  url [
+                    "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+                  ]
+                  filtering 5
+                }
+                roughnessMap ImageTexture {
+                  url [
+                    "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_roughness.jpg"
+                  ]
+                  filtering 5
+                }
+                metalness 0
+                normalMapFactor 0.5
+                textureTransform TextureTransform {
+                  scale 10 10
+                }
+              }
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/black_box_2.obj"
+                ]
+              }
+            }
+          ]
+        }
+        DEF BLACK_BOX_2_SCREW Pose {
+          translation 0 1.76 -0.480001
+          rotation 1 0 0 -1.5708003061004252
+          children [
+            Shape {
+              appearance USE METAL_PART
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/black_box_2_screw.obj"
+                ]
+              }
+            }
+          ]
+        }
+        DEF METAL_STRIP Pose {
+          translation 0 1.7616 -0.480001
+          rotation 1 0 0 -1.5708003061004252
+          children [
+            Shape {
+              appearance USE METAL_PART
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/metal_strip.obj"
+                ]
+              }
+            }
+          ]
+        }
+        DEF BACK_SCREWS Pose {
+          translation 0 1.7616 -0.480001
+          rotation 1 0 0 -1.5708003061004252
+          children [
+            Shape {
+              appearance USE BLACK_PART
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/back_screws.obj"
+                ]
+              }
+            }
+          ]
+        }
+        DEF SQUARE_SCREW_1 Pose {
+          translation 0 1.7628 -0.15
+          rotation 1 0 0 -1.5308
+          children [
+            Shape {
+              appearance USE METAL_PART
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/square_screw_1.obj"
+                ]
+              }
+            }
+          ]
+        }
+        DEF SQUARE_SCREW_2 Pose {
+          translation 0 1.7628 -0.81
+          rotation 1 0 0 -1.5708003061004252
+          children [
+            Shape {
+              appearance USE METAL_PART
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/square_screw_2.obj"
+                ]
+              }
+            }
+          ]
+        }
+        DEF BOTTOM_SIDE Group {
+          children [
+            Shape {
+              appearance USE BLACK_PART
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/bottom_side.obj"
+                ]
+              }
+            }
+            Shape {
+              appearance USE BLACK_PART
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/rear_0.obj"
+                ]
+              }
+            }
+            Shape {
+              appearance USE BLACK_PART
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/rear_1.obj"
+                ]
+              }
+            }
+            Shape {
+              appearance USE YELLOW_COVER
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/rear_2.obj"
+                ]
+              }
+            }
+            Shape {
+              appearance USE BLACK_PART
+              geometry Mesh {
+                url [
+                  "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/rear_3.obj"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+    DEF REAR_SHAPES Pose {
+      translation -0.459994 -1.9e-05 -1.650002
+      rotation 0.5773502691803881 -0.5773542691822531 -0.5773462691785233 2.094389
+      children [
+        DEF REAR_COVER Shape {
+          appearance USE YELLOW_COVER
+          geometry Mesh {
+            url [
+              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/rear_cover.obj"
+            ]
+          }
+        }
+        Camera {
+          translation 0.018113 1.66256 -0.011864
+          rotation 0.46198391213320916 0.46198291213339937 0.7570618560110125 -1.845577
+          name "rear camera"
+          width 1080
+          height 720
+        }
+        RangeFinder {
+          translation 0.018113 1.66256 -0.011864
+          rotation 0.46198391213320916 0.46198291213339937 0.7570618560110125 -1.845577
+          name "rear depth"
+          fieldOfView 1.57
+          width 424
+          height 240
+          maxRange 10
+        }
+        DEF REAR_CAM_1 Shape {
+          appearance USE TWO_LENS_ROTATE
+          geometry Mesh {
+            url [
+              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/rear_cam_1.obj"
+            ]
+          }
+        }
+        DEF REAR_CAM_2 Shape {
+          appearance USE BIG_LENS
+          geometry Mesh {
+            url [
+              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/rear_cam_2.obj"
+            ]
+          }
+        }
+        DEF REAR_CAM_3 Shape {
+          appearance USE LENS
+          geometry Mesh {
+            url [
+              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/rear_cam_3.obj"
+            ]
+          }
+        }
+        DEF REAR_BUTTONS Shape {
+          appearance PBRAppearance {
+          }
+          geometry Mesh {
+            url [
+              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/rear_buttons.obj"
+            ]
+          }
+        }
+        DEF REAR_BUTTONS_BLUE_1 Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0.556863
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+              ]
+              filtering 5
+            }
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/glossy_car_paint/glossy_car_paint_roughness.jpg"
+              ]
+              filtering 5
+            }
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/glossy_car_paint/glossy_car_paint_normal.jpg"
+              ]
+              filtering 5
+            }
+            normalMapFactor 0.5
+            textureTransform TextureTransform {
+              scale 10 10
+            }
+          }
+          geometry Mesh {
+            url [
+              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/rear_buttons_blue_1.obj"
+            ]
+          }
+        }
+        DEF REAR_BUTTONS_BLUE_2 Shape {
+          appearance DEF POWER_UP PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "C:/Users/alecp/Documents/spot-webots-cloud/protos/textures/startup.png"
+              ]
+            }
+            textureTransform TextureTransform {
+              rotation 0.96
+              scale 0.6 0.6
+              translation 0.67 -0.7
+            }
+          }
+          geometry Mesh {
+            url [
+              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/rear_buttons_blue_2.obj"
+            ]
+          }
+        }
+        DEF REAR_BUTTONS_RED_1 Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+              ]
+              filtering 5
+            }
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/glossy_car_paint/glossy_car_paint_roughness.jpg"
+              ]
+              filtering 5
+            }
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/glossy_car_paint/glossy_car_paint_normal.jpg"
+              ]
+              filtering 5
+            }
+            normalMapFactor 0.5
+            textureTransform TextureTransform {
+              scale 10 10
+            }
+          }
+          geometry Mesh {
+            url [
+              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/rear_buttons_red_1.obj"
+            ]
+          }
+        }
+        DEF REAR_BUTTONS_RED_2 Shape {
+          appearance PBRAppearance {
+          }
+          geometry Mesh {
+            url [
+              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/rear_buttons_red_2.obj"
+            ]
+          }
+        }
+      ]
+    }
+    DEF FRONT_LEFT_LEG Pose {
+      translation 0.3635 0 0.0118
+      rotation 0.5773502691803881 -0.5773542691822531 -0.5773462691785233 2.094389
+      children [
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 0 1
+            anchor -0.0528 0.0006 0
+          }
+          device [
+            PositionSensor {
+              name "front left shoulder abduction sensor"
+            }
+            RotationalMotor {
+              name "front left shoulder abduction motor"
+              minPosition -0.6
+              maxPosition 0.5
+              maxTorque 100
+            }
+          ]
+          endPoint DEF SHOULDER Solid {
+            translation -0.0528 0.0006 0
+            children [
+              DEF SHOULDER_ROTATION_JOINT HingeJoint {
+                jointParameters HingeJointParameters {
+                  anchor 0 -0.00053 0
+                }
+                device [
+                  PositionSensor {
+                    name "front left shoulder rotation sensor"
+                  }
+                  RotationalMotor {
+                    name "front left shoulder rotation motor"
+                    minPosition -1.7
+                    maxPosition 1.7
+                    maxTorque 100
+                  }
+                ]
+                endPoint DEF UPPERARM Solid {
+                  translation 0 -0.00053 0
+                  rotation 1 0 0 0
+                  children [
+                    HingeJoint {
+                      jointParameters HingeJointParameters {
+                        anchor -0.1172 -0.29077 0.2083
+                      }
+                      device [
+                        RotationalMotor {
+                          name "front left piston motor"
+                        }
+                      ]
+                      endPoint DEF TENDON Solid {
+                        translation 0.0528 -1.17737 1.4317
+                        rotation 1 0 0 -0.5235996938995747
+                        children [
+                          Pose {
+                            children [
+                              Shape {
+                                appearance DEF METAL_PART PBRAppearance {
+                                  baseColorMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_base_color.jpg"
+                                    ]
+                                  }
+                                  roughnessMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_roughness.jpg"
+                                    ]
+                                  }
+                                  normalMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_normal.jpg"
+                                    ]
+                                  }
+                                  textureTransform TextureTransform {
+                                    scale 20 20
+                                  }
+                                }
+                                geometry Mesh {
+                                  url [
+                                    "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/tendon.obj"
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                    DEF ELBOW_JOINT HingeJoint {
+                      jointParameters HingeJointParameters {
+                        anchor -0.1122 -0.319729 0.182338
+                      }
+                      device [
+                        PositionSensor {
+                          name "front left elbow sensor"
+                        }
+                        RotationalMotor {
+                          name "front left elbow motor"
+                          minPosition -0.45
+                          maxPosition 1.6
+                          maxTorque 100
+                        }
+                      ]
+                      endPoint DEF FOREARM Solid {
+                        translation -0.1122 -0.319729 0.182338
+                        rotation 1 0 0 0
+                        children [
+                          TouchSensor {
+                            translation 0.001038 -0.271321 -0.225038
+                            rotation -0.5773489358550934 -0.5773519358547601 0.5773499358549823 2.0944
+                            name "front left touch sensor"
+                            boundingObject Cylinder {
+                              height 0.039623
+                              radius 0.035094
+                            }
+                          }
+                          Pose {
+                            translation 0.165 -1.342041 0.640962
+                            children [
+                              DEF FOREARM_SH Shape {
+                                appearance DEF GRAY_PART PBRAppearance {
+                                  baseColor 0.0862745 0.0862745 0.0862745
+                                  roughness 1
+                                  roughnessMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_rough_roughness.jpg"
+                                    ]
+                                  }
+                                  metalness 0
+                                  normalMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_rough_normal.jpg"
+                                    ]
+                                  }
+                                  textureTransform TextureTransform {
+                                    scale 20 20
+                                  }
+                                }
+                                geometry Mesh {
+                                  url [
+                                    "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/forearm_sh.obj"
+                                  ]
+                                }
+                              }
+                              DEF FOOT Shape {
+                                appearance USE GRAY_PART
+                                geometry Mesh {
+                                  url [
+                                    "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/foot.obj"
+                                  ]
+                                }
+                              }
+                              DEF FOOT_RUBBER Shape {
+                                appearance PBRAppearance {
+                                  baseColor 0.0980392 0.0980392 0.0980392
+                                  baseColorMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_padded_base_color.jpg"
+                                    ]
+                                  }
+                                  roughness 1
+                                  roughnessMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_padded_roughness.jpg"
+                                    ]
+                                  }
+                                  metalness 0
+                                  metalnessMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_padded_metalness.jpg"
+                                    ]
+                                  }
+                                  normalMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_padded_normal.jpg"
+                                    ]
+                                  }
+                                  occlusionMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_padded_occlusion.jpg"
+                                    ]
+                                  }
+                                  textureTransform TextureTransform {
+                                    center 0.032 0
+                                    scale 14 24
+                                  }
+                                }
+                                geometry Mesh {
+                                  url [
+                                    "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/foot_rubber.obj"
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                        name "front left forearm"
+                        boundingObject DEF FOREARM_BO Group {
+                          children [
+                            Pose {
+                              translation -0.001038 -0.271321 -0.225038
+                              rotation -0.5773489358550934 -0.5773519358547601 0.5773499358549823 2.0944
+                              children [
+                                Cylinder {
+                                  height 0.039623
+                                  radius 0.035094
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.227421 -0.230239
+                              rotation -1 0 0 0.947675
+                              children [
+                                Box {
+                                  size 0.037736 0.006038 0.041509
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.232272 -0.198255
+                              rotation 1 0 0 -0.0931852938995747
+                              children [
+                                Box {
+                                  size 0.037736 0.045283 0.006792
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.205751 -0.206348
+                              rotation 1 0 0 0.616815
+                              children [
+                                Box {
+                                  size 0.025283 0.022642 0.020755
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.168611 -0.18111
+                              rotation 1 0 0 -2.513185307179586
+                              children [
+                                Box {
+                                  size 0.019245 0.071698 0.017358
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.125111 -0.148236
+                              rotation -1 0 0 -0.6636253071795863
+                              children [
+                                Box {
+                                  size 0.021887 0.037736 0.018491
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.100861 -0.126163
+                              rotation -1 0 0 -0.7604153071795858
+                              children [
+                                Box {
+                                  size 0.026415 0.030189 0.021132
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.084241 -0.106843
+                              rotation 1 0 0 0.867225
+                              children [
+                                Box {
+                                  size 0.032453 0.022642 0.024528
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.068551 -0.08661
+                              rotation 1 0 0 0.907225
+                              children [
+                                Box {
+                                  size 0.037736 0.033962 0.026415
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.049721 -0.059227
+                              rotation 1 0 0 0.933245
+                              children [
+                                Cylinder {
+                                  height 0.030566
+                                  radius 0.024528
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.034991 -0.038166
+                              rotation 1 0 0 0.937225
+                              children [
+                                Box {
+                                  size 0.038113 0.022642 0.032075
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.022931 -0.021744
+                              rotation 1 0 0 0.937225
+                              children [
+                                Box {
+                                  size 0.031321 0.018868 0.03283
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.010711 -0.006332
+                              rotation -1 0 0 -0.8340353071795858
+                              children [
+                                Box {
+                                  size 0.027925 0.018868 0.03283
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 0.004299 0.006862
+                              rotation -1 0 0 -0.6808453071795864
+                              children [
+                                Box {
+                                  size 0.027547 0.018868 0.034717
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 0.021259 0.019851
+                              rotation -1 0 0 -0.604465307179586
+                              children [
+                                Box {
+                                  size 0.020377 0.026415 0.03434
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 0.019179 -0.009531
+                              rotation 1 0 0 0.494895
+                              children [
+                                Box {
+                                  size 0.010189 0.05283 0.00717
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 0.037459 0.024742
+                              rotation 0.5773496025226483 0.5773516025212714 -0.5773496025226483 -2.094399
+                              children [
+                                Cylinder {
+                                  height 0.019736
+                                  radius 0.021887
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                        physics Physics {
+                          density -1
+                          mass 0.137150943
+                          centerOfMass [
+                            -0.0010379999999999999 -0.12989919535771882 -0.12095184442508211
+                          ]
+                          inertiaMatrix [
+                            0.014652279026458286 0.026034033109202114 0.011480093961576602
+                            -6.107196767681762e-05 0.012746451515841613 6.558985205280841e-05
+                          ]
+                        }
+                      }
+                    }
+                    Pose {
+                      translation 0.0528 -1.66177 0.8233
+                      children [
+                        DEF COVER_LEG Shape {
+                          appearance DEF YELLOW_COVER PBRAppearance {
+                            baseColor 0.847059 0.666667 0
+                            baseColorMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+                              ]
+                              filtering 5
+                            }
+                            roughnessMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_roughness.jpg"
+                              ]
+                              filtering 5
+                            }
+                            metalness 0
+                            normalMapFactor 0.5
+                            textureTransform TextureTransform {
+                              scale 10 10
+                            }
+                          }
+                          geometry Mesh {
+                            url [
+                              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/cover_leg.obj"
+                            ]
+                          }
+                        }
+                        DEF COVER_MOTOR Shape {
+                          appearance DEF BLACK_PART PBRAppearance {
+                            baseColor 0 0 0
+                            baseColorMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+                              ]
+                              filtering 5
+                            }
+                            roughnessMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_roughness.jpg"
+                              ]
+                              filtering 5
+                            }
+                            metalness 0
+                            normalMapFactor 0.5
+                            textureTransform TextureTransform {
+                              scale 10 10
+                            }
+                          }
+                          geometry Mesh {
+                            url [
+                              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/cover_motor.obj"
+                            ]
+                          }
+                        }
+                        DEF UPPERARM_SH Shape {
+                          appearance USE GRAY_PART
+                          geometry Mesh {
+                            url [
+                              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/upperarm_sh.obj"
+                            ]
+                          }
+                        }
+                        DEF UPPERARM_INSIDE Shape {
+                          appearance DEF METAL_PART PBRAppearance {
+                            baseColorMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_base_color.jpg"
+                              ]
+                            }
+                            roughnessMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_roughness.jpg"
+                              ]
+                            }
+                            normalMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_normal.jpg"
+                              ]
+                            }
+                            textureTransform TextureTransform {
+                              scale 20 20
+                            }
+                          }
+                          geometry Mesh {
+                            url [
+                              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/upperarm_inside.obj"
+                            ]
+                          }
+                        }
+                        DEF COVER_ELBOW Shape {
+                          appearance USE METAL_PART
+                          geometry Mesh {
+                            url [
+                              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/cover_elbow.obj"
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                  name "front left upperarm"
+                  boundingObject DEF UPPERARM_BO Group {
+                    children [
+                      Pose {
+                        translation -0.117011 -0.32073 0.1829
+                        rotation 0.5773496025226483 0.5773516025212714 -0.5773496025226483 -2.094399
+                        children [
+                          Cylinder {
+                            height 0.060377
+                            radius 0.02717
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.117011 -0.25867 0.180358
+                        rotation -0.02498960817355977 0.024989508173527065 0.9993753268740314 1.57142
+                        children [
+                          Box {
+                            size 0.09434 0.060377 0.053208
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.149087 -0.023654 0.007772
+                        rotation 1 0 0 -0.6563753071795864
+                        children [
+                          Box {
+                            size 0.016226 0.177358 0.071698
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.14944 -0.001095 0.048195
+                        rotation -0.8708125987213743 0.4653767855500056 -0.1584609269797163 0.745474
+                        children [
+                          Box {
+                            size 0.004528 0.173585 0.015094
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.143963 -0.142325 0.149419
+                        rotation -0.8073442439173019 0.5785731748002897 -0.11596703503631382 0.7821
+                        children [
+                          Box {
+                            size 0.004528 0.173585 0.015094
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.143376 -0.16295 0.113632
+                        rotation -0.9969148110595092 0.025671095134680254 0.07417448594206484 0.648238
+                        children [
+                          Box {
+                            size 0.016226 0.173585 0.071698
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.113992 -0.21476 0.154045
+                        rotation 1 0 0 -0.6563753071795864
+                        children [
+                          Box {
+                            size 0.054717 0.098113 0.064151
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.113238 -0.119427 0.086296
+                        rotation 1 0 0 -2.227175
+                        children [
+                          Cylinder {
+                            height 0.150943
+                            radius 0.028679
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.113238 -0.04459 0.028636
+                        rotation 1 0 0 -2.227175
+                        children [
+                          Cylinder {
+                            height 0.041509
+                            radius 0.037736
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.113738 -0.02284 -0.046726
+                        rotation 1 0 0 -0.6563753071795864
+                        children [
+                          Box {
+                            size 0.061509 0.069811 0.011321
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.073615 -0.00019 -0.000689
+                        rotation 0.5773496025226483 0.5773516025212714 -0.5773496025226483 -2.094399
+                        children [
+                          Cylinder {
+                            height 0.037736
+                            radius 0.04
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.115879 0.008331 -0.011344
+                        rotation 1 0 0 -2.227175
+                        children [
+                          Cylinder {
+                            height 0.086792
+                            radius 0.033962
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.12154 0.053961 -0.047932
+                        rotation 1 0 0 -0.6563753071795864
+                        children [
+                          Box {
+                            size 0.064151 0.003774 0.071698
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.12003 0.073308 -0.006499
+                        rotation 1 0 0 0.0136247
+                        children [
+                          Box {
+                            size 0.060377 0.007547 0.022642
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.117011 -0.13635 0.154336
+                        rotation 1 0 0 0.99
+                        children [
+                          Box {
+                            size 0.049057 0.005283 0.169811
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.083111 -0.31378 0.182934
+                        rotation -0.03814818654281376 0.03814838654274321 -0.9985436477529064 -1.572255307179586
+                        children [
+                          Box {
+                            size 0.044 0.008 0.0387
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                  physics Physics {
+                    density -1
+                    mass 0.934886792
+                    centerOfMass [
+                      -0.11714932354424774 -0.12276425577719878 0.08285389390894864
+                    ]
+                    inertiaMatrix [
+                      0.1012996403729267 0.09841956052568711 0.06647528278171203
+                      0.02395093549986319 -0.04470786622876792 0.03546126467713879
+                    ]
+                  }
+                }
+              }
+              Pose {
+                translation 0.0528 -1.6623 0.8233
+                children [
+                  DEF MOTOR_SUPPORT Shape {
+                    appearance USE BLACK_PART
+                    geometry Mesh {
+                      url [
+                        "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/motor_support.obj"
+                      ]
+                    }
+                  }
+                  DEF MOTOR Shape {
+                    appearance USE GRAY_PART
+                    geometry Mesh {
+                      url [
+                        "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/motor.obj"
+                      ]
+                    }
+                  }
+                  DEF MOTOR_RING Shape {
+                    appearance USE METAL_PART
+                    geometry Mesh {
+                      url [
+                        "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/motor_ring.obj"
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+            name "front left shoulder"
+            boundingObject DEF SHOULDER_BO Group {
+              children [
+                Pose {
+                  translation 0.004874 0.000873 -0.000643
+                  children [
+                    Box {
+                      size 0.086792 0.124528 0.120755
+                    }
+                  ]
+                }
+                Pose {
+                  translation -0.006447 0.000873 -0.000643
+                  children [
+                    Box {
+                      size 0.098113 0.098113 0.098113
+                    }
+                  ]
+                }
+                Pose {
+                  translation -0.058145 0.000873 -0.000643
+                  rotation 0.5773496025226483 0.5773516025212714 -0.5773496025226483 -2.094399
+                  children [
+                    Cylinder {
+                      height 0.006038
+                      radius 0.047925
+                    }
+                  ]
+                }
+              ]
+            }
+            physics Physics {
+              density -1
+              mass 2.131962264
+              centerOfMass [
+                0.000643 0.000985966468486107 0.000873
+              ]
+              inertiaMatrix [
+                0.0042655393382746935 0.004840458991120049 0.004164087201524784
+                -1.4537990385136328e-06 -1.2872309568206006e-06 -1.9737366790868247e-06
+              ]
+            }
+          }
+        }
+      ]
+    }
+    DEF FRONT_RIGHT_LEG Pose {
+      translation 0.3635 0 0.0118
+      rotation 0.5773502691803881 -0.5773542691822531 -0.5773462691785233 2.094389
+      children [
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 0 1
+            anchor 0.0528 0.0006 0
+          }
+          device [
+            PositionSensor {
+              name "front right shoulder abduction sensor"
+            }
+            RotationalMotor {
+              name "front right shoulder abduction motor"
+              minPosition -0.6
+              maxPosition 0.5
+              maxTorque 100
+            }
+          ]
+          endPoint DEF SHOULDER Solid {
+            translation 0.0528 0.0006 0
+            children [
+              DEF SHOULDER_ROTATION_JOINT HingeJoint {
+                jointParameters HingeJointParameters {
+                  anchor 0 -0.00053 0
+                }
+                device [
+                  PositionSensor {
+                    name "front right shoulder rotation sensor"
+                  }
+                  RotationalMotor {
+                    name "front right shoulder rotation motor"
+                    minPosition -1.7
+                    maxPosition 1.7
+                    maxTorque 100
+                  }
+                ]
+                endPoint DEF UPPERARM Solid {
+                  translation 0 -0.00053 0
+                  rotation 1 0 0 0
+                  children [
+                    HingeJoint {
+                      jointParameters HingeJointParameters {
+                        anchor 0.1172 -0.29077 0.2083
+                      }
+                      device [
+                        RotationalMotor {
+                          name "front right piston motor"
+                        }
+                      ]
+                      endPoint DEF TENDON Solid {
+                        translation -0.0528 -1.17737 1.4317
+                        rotation 1 0 0 -0.5235996938995747
+                        children [
+                          Transform {
+                            scale -1 1 1
+                            children [
+                              Shape {
+                                appearance DEF METAL_PART PBRAppearance {
+                                  baseColorMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_base_color.jpg"
+                                    ]
+                                  }
+                                  roughnessMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_roughness.jpg"
+                                    ]
+                                  }
+                                  normalMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_normal.jpg"
+                                    ]
+                                  }
+                                  textureTransform TextureTransform {
+                                    scale 20 20
+                                  }
+                                }
+                                geometry Mesh {
+                                  url [
+                                    "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/tendon.obj"
+                                  ]
+                                  ccw FALSE
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                    DEF ELBOW_JOINT HingeJoint {
+                      jointParameters HingeJointParameters {
+                        anchor 0.1122 -0.319729 0.182338
+                      }
+                      device [
+                        PositionSensor {
+                          name "front right elbow sensor"
+                        }
+                        RotationalMotor {
+                          name "front right elbow motor"
+                          minPosition -0.45
+                          maxPosition 1.6
+                          maxTorque 100
+                        }
+                      ]
+                      endPoint DEF FOREARM Solid {
+                        translation 0.1122 -0.319729 0.182338
+                        rotation 1 0 0 0
+                        children [
+                          TouchSensor {
+                            translation 0.001038 -0.271321 -0.225038
+                            rotation -0.5773489358550934 -0.5773519358547601 0.5773499358549823 2.0944
+                            name "front right touch sensor"
+                            boundingObject Cylinder {
+                              height 0.039623
+                              radius 0.035094
+                            }
+                          }
+                          Transform {
+                            translation -0.165 -1.342041 0.640962
+                            scale -1 1 1
+                            children [
+                              DEF FOREARM_SH Shape {
+                                appearance DEF GRAY_PART PBRAppearance {
+                                  baseColor 0.0862745 0.0862745 0.0862745
+                                  roughness 1
+                                  roughnessMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_rough_roughness.jpg"
+                                    ]
+                                  }
+                                  metalness 0
+                                  normalMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_rough_normal.jpg"
+                                    ]
+                                  }
+                                  textureTransform TextureTransform {
+                                    scale 20 20
+                                  }
+                                }
+                                geometry Mesh {
+                                  url [
+                                    "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/forearm_sh.obj"
+                                  ]
+                                  ccw FALSE
+                                }
+                              }
+                              DEF FOOT Shape {
+                                appearance USE GRAY_PART
+                                geometry Mesh {
+                                  url [
+                                    "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/foot.obj"
+                                  ]
+                                  ccw FALSE
+                                }
+                              }
+                              DEF FOOT_RUBBER Shape {
+                                appearance PBRAppearance {
+                                  baseColor 0.0980392 0.0980392 0.0980392
+                                  baseColorMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_padded_base_color.jpg"
+                                    ]
+                                  }
+                                  roughness 1
+                                  roughnessMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_padded_roughness.jpg"
+                                    ]
+                                  }
+                                  metalness 0
+                                  metalnessMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_padded_metalness.jpg"
+                                    ]
+                                  }
+                                  normalMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_padded_normal.jpg"
+                                    ]
+                                  }
+                                  occlusionMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_padded_occlusion.jpg"
+                                    ]
+                                  }
+                                  textureTransform TextureTransform {
+                                    center 0.032 0
+                                    scale 14 24
+                                  }
+                                }
+                                geometry Mesh {
+                                  url [
+                                    "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/foot_rubber.obj"
+                                  ]
+                                  ccw FALSE
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                        name "front right forearm"
+                        boundingObject DEF FOREARM_BO Group {
+                          children [
+                            Pose {
+                              translation 0.001038 -0.271321 -0.225038
+                              rotation -0.5773489358550934 -0.5773519358547601 0.5773499358549823 2.0944
+                              children [
+                                Cylinder {
+                                  height 0.039623
+                                  radius 0.035094
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.227421 -0.230239
+                              rotation -1 0 0 0.947675
+                              children [
+                                Box {
+                                  size 0.037736 0.006038 0.041509
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.232272 -0.198255
+                              rotation 1 0 0 -0.0931852938995747
+                              children [
+                                Box {
+                                  size 0.037736 0.045283 0.006792
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.205751 -0.206348
+                              rotation 1 0 0 0.616815
+                              children [
+                                Box {
+                                  size 0.025283 0.022642 0.020755
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.168611 -0.18111
+                              rotation 1 0 0 -2.513185307179586
+                              children [
+                                Box {
+                                  size 0.019245 0.071698 0.017358
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.125111 -0.148236
+                              rotation -1 0 0 -0.6636253071795863
+                              children [
+                                Box {
+                                  size 0.021887 0.037736 0.018491
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.100861 -0.126163
+                              rotation -1 0 0 -0.7604153071795858
+                              children [
+                                Box {
+                                  size 0.026415 0.030189 0.021132
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.084241 -0.106843
+                              rotation 1 0 0 0.867225
+                              children [
+                                Box {
+                                  size 0.032453 0.022642 0.024528
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.068551 -0.08661
+                              rotation 1 0 0 0.907225
+                              children [
+                                Box {
+                                  size 0.037736 0.033962 0.026415
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.049721 -0.059227
+                              rotation 1 0 0 0.933245
+                              children [
+                                Cylinder {
+                                  height 0.030566
+                                  radius 0.024528
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.034991 -0.038166
+                              rotation 1 0 0 0.937225
+                              children [
+                                Box {
+                                  size 0.038113 0.022642 0.032075
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.022931 -0.021744
+                              rotation 1 0 0 0.937225
+                              children [
+                                Box {
+                                  size 0.031321 0.018868 0.03283
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.010711 -0.006332
+                              rotation -1 0 0 -0.8340353071795858
+                              children [
+                                Box {
+                                  size 0.027925 0.018868 0.03283
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 0.004299 0.006862
+                              rotation -1 0 0 -0.6808453071795864
+                              children [
+                                Box {
+                                  size 0.027547 0.018868 0.034717
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 0.021259 0.019851
+                              rotation -1 0 0 -0.604465307179586
+                              children [
+                                Box {
+                                  size 0.020377 0.026415 0.03434
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 0.019179 -0.009531
+                              rotation 1 0 0 0.494895
+                              children [
+                                Box {
+                                  size 0.010189 0.05283 0.00717
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 0.037459 0.024742
+                              rotation 0.5773496025226483 0.5773516025212714 -0.5773496025226483 -2.094399
+                              children [
+                                Cylinder {
+                                  height 0.019736
+                                  radius 0.021887
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                        physics Physics {
+                          density -1
+                          mass 0.137150943
+                          centerOfMass [
+                            0.0010379999999999999 -0.12989919535771882 -0.12095184442508211
+                          ]
+                          inertiaMatrix [
+                            0.014652279026458286 0.026034033109202114 0.011480093961576602
+                            6.107196767681762e-05 0.012746451515841613 -6.558985205280841e-05
+                          ]
+                        }
+                      }
+                    }
+                    Transform {
+                      translation -0.0528 -1.66177 0.8233
+                      scale -1 1 1
+                      children [
+                        DEF COVER_LEG Shape {
+                          appearance DEF YELLOW_COVER PBRAppearance {
+                            baseColor 0.847059 0.666667 0
+                            baseColorMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+                              ]
+                              filtering 5
+                            }
+                            roughnessMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_roughness.jpg"
+                              ]
+                              filtering 5
+                            }
+                            metalness 0
+                            normalMapFactor 0.5
+                            textureTransform TextureTransform {
+                              scale 10 10
+                            }
+                          }
+                          geometry Mesh {
+                            url [
+                              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/cover_leg.obj"
+                            ]
+                            ccw FALSE
+                          }
+                        }
+                        DEF COVER_MOTOR Shape {
+                          appearance DEF BLACK_PART PBRAppearance {
+                            baseColor 0 0 0
+                            baseColorMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+                              ]
+                              filtering 5
+                            }
+                            roughnessMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_roughness.jpg"
+                              ]
+                              filtering 5
+                            }
+                            metalness 0
+                            normalMapFactor 0.5
+                            textureTransform TextureTransform {
+                              scale 10 10
+                            }
+                          }
+                          geometry Mesh {
+                            url [
+                              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/cover_motor.obj"
+                            ]
+                            ccw FALSE
+                          }
+                        }
+                        DEF UPPERARM_SH Shape {
+                          appearance USE GRAY_PART
+                          geometry Mesh {
+                            url [
+                              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/upperarm_sh.obj"
+                            ]
+                            ccw FALSE
+                          }
+                        }
+                        DEF UPPERARM_INSIDE Shape {
+                          appearance DEF METAL_PART PBRAppearance {
+                            baseColorMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_base_color.jpg"
+                              ]
+                            }
+                            roughnessMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_roughness.jpg"
+                              ]
+                            }
+                            normalMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_normal.jpg"
+                              ]
+                            }
+                            textureTransform TextureTransform {
+                              scale 20 20
+                            }
+                          }
+                          geometry Mesh {
+                            url [
+                              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/upperarm_inside.obj"
+                            ]
+                            ccw FALSE
+                          }
+                        }
+                        DEF COVER_ELBOW Shape {
+                          appearance USE METAL_PART
+                          geometry Mesh {
+                            url [
+                              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/cover_elbow.obj"
+                            ]
+                            ccw FALSE
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                  name "front right upperarm"
+                  boundingObject DEF UPPERARM_BO Group {
+                    children [
+                      Pose {
+                        translation 0.117011 -0.32073 0.1829
+                        rotation 0.5773496025226483 0.5773516025212714 -0.5773496025226483 -2.094399
+                        children [
+                          Cylinder {
+                            height 0.060377
+                            radius 0.02717
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.117011 -0.25867 0.180358
+                        rotation -0.02498960817355977 0.024989508173527065 0.9993753268740314 1.57142
+                        children [
+                          Box {
+                            size 0.09434 0.060377 0.053208
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.149087 -0.023654 0.007772
+                        rotation 1 0 0 -0.6563753071795864
+                        children [
+                          Box {
+                            size 0.016226 0.177358 0.071698
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.14944 -0.001095 0.048195
+                        rotation -0.8708125987213743 0.4653767855500056 -0.1584609269797163 0.745474
+                        children [
+                          Box {
+                            size 0.004528 0.173585 0.015094
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.143963 -0.142325 0.149419
+                        rotation -0.8073442439173019 0.5785731748002897 -0.11596703503631382 0.7821
+                        children [
+                          Box {
+                            size 0.004528 0.173585 0.015094
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.143376 -0.16295 0.113632
+                        rotation -0.9969148110595092 0.025671095134680254 0.07417448594206484 0.648238
+                        children [
+                          Box {
+                            size 0.016226 0.173585 0.071698
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.113992 -0.21476 0.154045
+                        rotation 1 0 0 -0.6563753071795864
+                        children [
+                          Box {
+                            size 0.054717 0.098113 0.064151
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.113238 -0.119427 0.086296
+                        rotation 1 0 0 -2.227175
+                        children [
+                          Cylinder {
+                            height 0.150943
+                            radius 0.028679
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.113238 -0.04459 0.028636
+                        rotation 1 0 0 -2.227175
+                        children [
+                          Cylinder {
+                            height 0.041509
+                            radius 0.037736
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.113738 -0.02284 -0.046726
+                        rotation 1 0 0 -0.6563753071795864
+                        children [
+                          Box {
+                            size 0.061509 0.069811 0.011321
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.073615 -0.00019 -0.000689
+                        rotation 0.5773496025226483 0.5773516025212714 -0.5773496025226483 -2.094399
+                        children [
+                          Cylinder {
+                            height 0.037736
+                            radius 0.04
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.115879 0.008331 -0.011344
+                        rotation 1 0 0 -2.227175
+                        children [
+                          Cylinder {
+                            height 0.086792
+                            radius 0.033962
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.12154 0.053961 -0.047932
+                        rotation 1 0 0 -0.6563753071795864
+                        children [
+                          Box {
+                            size 0.064151 0.003774 0.071698
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.12003 0.073308 -0.006499
+                        rotation 1 0 0 0.0136247
+                        children [
+                          Box {
+                            size 0.060377 0.007547 0.022642
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.117011 -0.13635 0.154336
+                        rotation 1 0 0 0.99
+                        children [
+                          Box {
+                            size 0.049057 0.005283 0.169811
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.083111 -0.31378 0.182934
+                        rotation -0.03814818654281376 0.03814838654274321 -0.9985436477529064 -1.572255307179586
+                        children [
+                          Box {
+                            size 0.044 0.008 0.0387
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                  physics Physics {
+                    density -1
+                    mass 0.934886792
+                    centerOfMass [
+                      0.11714932354424774 -0.12276425577719878 0.08285389390894864
+                    ]
+                    inertiaMatrix [
+                      0.1012996403729267 0.09841956052568711 0.06647528278171203
+                      -0.02395093549986319 -0.04470786622876792 -0.03546126467713879
+                    ]
+                  }
+                }
+              }
+              Transform {
+                translation -0.0528 -1.6623 0.8233
+                scale -1 1 1
+                children [
+                  DEF MOTOR_SUPPORT Shape {
+                    appearance USE BLACK_PART
+                    geometry Mesh {
+                      url [
+                        "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/motor_support.obj"
+                      ]
+                      ccw FALSE
+                    }
+                  }
+                  DEF MOTOR Shape {
+                    appearance USE GRAY_PART
+                    geometry Mesh {
+                      url [
+                        "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/motor.obj"
+                      ]
+                      ccw FALSE
+                    }
+                  }
+                  DEF MOTOR_RING Shape {
+                    appearance USE METAL_PART
+                    geometry Mesh {
+                      url [
+                        "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/motor_ring.obj"
+                      ]
+                      ccw FALSE
+                    }
+                  }
+                ]
+              }
+            ]
+            name "front right shoulder"
+            boundingObject DEF SHOULDER_BO Group {
+              children [
+                Pose {
+                  translation -0.004874 0.000873 -0.000643
+                  children [
+                    Box {
+                      size 0.086792 0.124528 0.120755
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0.006447 0.000873 -0.000643
+                  children [
+                    Box {
+                      size 0.098113 0.098113 0.098113
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0.058145 0.000873 -0.000643
+                  rotation 0.5773496025226483 0.5773516025212714 -0.5773496025226483 -2.094399
+                  children [
+                    Cylinder {
+                      height 0.006038
+                      radius 0.047925
+                    }
+                  ]
+                }
+              ]
+            }
+            physics Physics {
+              density -1
+              mass 2.131962264
+              centerOfMass [
+                0.000643 -0.000985966468486107 0.000873
+              ]
+              inertiaMatrix [
+                0.0042655393382746935 0.004840458991120049 0.004164087201524784
+                1.4537990385136328e-06 -1.2872309568206006e-06 1.9737366790868247e-06
+              ]
+            }
+          }
+        }
+      ]
+    }
+    DEF REAR_LEFT_LEG Pose {
+      translation -0.3084 0 0.0117
+      rotation 0.5773502691803881 -0.5773542691822531 -0.5773462691785233 2.094389
+      children [
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 0 1
+            anchor -0.0528 0.0006 0
+          }
+          device [
+            PositionSensor {
+              name "rear left shoulder abduction sensor"
+            }
+            RotationalMotor {
+              name "rear left shoulder abduction motor"
+              minPosition -0.6
+              maxPosition 0.5
+              maxTorque 100
+            }
+          ]
+          endPoint DEF SHOULDER Solid {
+            translation -0.0528 0.0006 0
+            children [
+              DEF SHOULDER_ROTATION_JOINT HingeJoint {
+                jointParameters HingeJointParameters {
+                  anchor 0 -0.00053 0
+                }
+                device [
+                  PositionSensor {
+                    name "rear left shoulder rotation sensor"
+                  }
+                  RotationalMotor {
+                    name "rear left shoulder rotation motor"
+                    minPosition -1.7
+                    maxPosition 1.7
+                    maxTorque 100
+                  }
+                ]
+                endPoint DEF UPPERARM Solid {
+                  translation 0 -0.00053 0
+                  rotation 1 0 0 0
+                  children [
+                    HingeJoint {
+                      jointParameters HingeJointParameters {
+                        anchor -0.1172 -0.29077 0.2083
+                      }
+                      device [
+                        RotationalMotor {
+                          name "rear left piston motor"
+                        }
+                      ]
+                      endPoint DEF TENDON Solid {
+                        translation 0.0528 -1.17737 1.4317
+                        rotation 1 0 0 -0.5235996938995747
+                        children [
+                          Pose {
+                            children [
+                              Shape {
+                                appearance DEF METAL_PART PBRAppearance {
+                                  baseColorMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_base_color.jpg"
+                                    ]
+                                  }
+                                  roughnessMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_roughness.jpg"
+                                    ]
+                                  }
+                                  normalMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_normal.jpg"
+                                    ]
+                                  }
+                                  textureTransform TextureTransform {
+                                    scale 20 20
+                                  }
+                                }
+                                geometry Mesh {
+                                  url [
+                                    "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/tendon.obj"
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                    DEF ELBOW_JOINT HingeJoint {
+                      jointParameters HingeJointParameters {
+                        anchor -0.1122 -0.319729 0.182338
+                      }
+                      device [
+                        PositionSensor {
+                          name "rear left elbow sensor"
+                        }
+                        RotationalMotor {
+                          name "rear left elbow motor"
+                          minPosition -0.45
+                          maxPosition 1.6
+                          maxTorque 100
+                        }
+                      ]
+                      endPoint DEF FOREARM Solid {
+                        translation -0.1122 -0.319729 0.182338
+                        rotation 1 0 0 0
+                        children [
+                          TouchSensor {
+                            translation 0.001038 -0.271321 -0.225038
+                            rotation -0.5773489358550934 -0.5773519358547601 0.5773499358549823 2.0944
+                            name "rear left touch sensor"
+                            boundingObject Cylinder {
+                              height 0.039623
+                              radius 0.035094
+                            }
+                          }
+                          Pose {
+                            translation 0.165 -1.342041 0.640962
+                            children [
+                              DEF FOREARM_SH Shape {
+                                appearance DEF GRAY_PART PBRAppearance {
+                                  baseColor 0.0862745 0.0862745 0.0862745
+                                  roughness 1
+                                  roughnessMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_rough_roughness.jpg"
+                                    ]
+                                  }
+                                  metalness 0
+                                  normalMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_rough_normal.jpg"
+                                    ]
+                                  }
+                                  textureTransform TextureTransform {
+                                    scale 20 20
+                                  }
+                                }
+                                geometry Mesh {
+                                  url [
+                                    "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/forearm_sh.obj"
+                                  ]
+                                }
+                              }
+                              DEF FOOT Shape {
+                                appearance USE GRAY_PART
+                                geometry Mesh {
+                                  url [
+                                    "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/foot.obj"
+                                  ]
+                                }
+                              }
+                              DEF FOOT_RUBBER Shape {
+                                appearance PBRAppearance {
+                                  baseColor 0.0980392 0.0980392 0.0980392
+                                  baseColorMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_padded_base_color.jpg"
+                                    ]
+                                  }
+                                  roughness 1
+                                  roughnessMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_padded_roughness.jpg"
+                                    ]
+                                  }
+                                  metalness 0
+                                  metalnessMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_padded_metalness.jpg"
+                                    ]
+                                  }
+                                  normalMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_padded_normal.jpg"
+                                    ]
+                                  }
+                                  occlusionMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_padded_occlusion.jpg"
+                                    ]
+                                  }
+                                  textureTransform TextureTransform {
+                                    center 0.032 0
+                                    scale 14 24
+                                  }
+                                }
+                                geometry Mesh {
+                                  url [
+                                    "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/foot_rubber.obj"
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                        name "rear left forearm"
+                        boundingObject DEF FOREARM_BO Group {
+                          children [
+                            Pose {
+                              translation -0.001038 -0.271321 -0.225038
+                              rotation -0.5773489358550934 -0.5773519358547601 0.5773499358549823 2.0944
+                              children [
+                                Cylinder {
+                                  height 0.039623
+                                  radius 0.035094
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.227421 -0.230239
+                              rotation -1 0 0 0.947675
+                              children [
+                                Box {
+                                  size 0.037736 0.006038 0.041509
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.232272 -0.198255
+                              rotation 1 0 0 -0.0931852938995747
+                              children [
+                                Box {
+                                  size 0.037736 0.045283 0.006792
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.205751 -0.206348
+                              rotation 1 0 0 0.616815
+                              children [
+                                Box {
+                                  size 0.025283 0.022642 0.020755
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.168611 -0.18111
+                              rotation 1 0 0 -2.513185307179586
+                              children [
+                                Box {
+                                  size 0.019245 0.071698 0.017358
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.125111 -0.148236
+                              rotation -1 0 0 -0.6636253071795863
+                              children [
+                                Box {
+                                  size 0.021887 0.037736 0.018491
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.100861 -0.126163
+                              rotation -1 0 0 -0.7604153071795858
+                              children [
+                                Box {
+                                  size 0.026415 0.030189 0.021132
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.084241 -0.106843
+                              rotation 1 0 0 0.867225
+                              children [
+                                Box {
+                                  size 0.032453 0.022642 0.024528
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.068551 -0.08661
+                              rotation 1 0 0 0.907225
+                              children [
+                                Box {
+                                  size 0.037736 0.033962 0.026415
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.049721 -0.059227
+                              rotation 1 0 0 0.933245
+                              children [
+                                Cylinder {
+                                  height 0.030566
+                                  radius 0.024528
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.034991 -0.038166
+                              rotation 1 0 0 0.937225
+                              children [
+                                Box {
+                                  size 0.038113 0.022642 0.032075
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.022931 -0.021744
+                              rotation 1 0 0 0.937225
+                              children [
+                                Box {
+                                  size 0.031321 0.018868 0.03283
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 -0.010711 -0.006332
+                              rotation -1 0 0 -0.8340353071795858
+                              children [
+                                Box {
+                                  size 0.027925 0.018868 0.03283
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 0.004299 0.006862
+                              rotation -1 0 0 -0.6808453071795864
+                              children [
+                                Box {
+                                  size 0.027547 0.018868 0.034717
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 0.021259 0.019851
+                              rotation -1 0 0 -0.604465307179586
+                              children [
+                                Box {
+                                  size 0.020377 0.026415 0.03434
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 0.019179 -0.009531
+                              rotation 1 0 0 0.494895
+                              children [
+                                Box {
+                                  size 0.010189 0.05283 0.00717
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation -0.001038 0.037459 0.024742
+                              rotation 0.5773496025226483 0.5773516025212714 -0.5773496025226483 -2.094399
+                              children [
+                                Cylinder {
+                                  height 0.019736
+                                  radius 0.021887
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                        physics Physics {
+                          density -1
+                          mass 0.137150943
+                          centerOfMass [
+                            -0.0010379999999999999 -0.12989919535771882 -0.12095184442508211
+                          ]
+                          inertiaMatrix [
+                            0.014652279026458286 0.026034033109202114 0.011480093961576602
+                            -6.107196767681762e-05 0.012746451515841613 6.558985205280841e-05
+                          ]
+                        }
+                      }
+                    }
+                    Pose {
+                      translation 0.0528 -1.66177 0.8233
+                      children [
+                        DEF COVER_LEG Shape {
+                          appearance DEF YELLOW_COVER PBRAppearance {
+                            baseColor 0.847059 0.666667 0
+                            baseColorMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+                              ]
+                              filtering 5
+                            }
+                            roughnessMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_roughness.jpg"
+                              ]
+                              filtering 5
+                            }
+                            metalness 0
+                            normalMapFactor 0.5
+                            textureTransform TextureTransform {
+                              scale 10 10
+                            }
+                          }
+                          geometry Mesh {
+                            url [
+                              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/cover_leg.obj"
+                            ]
+                          }
+                        }
+                        DEF COVER_MOTOR Shape {
+                          appearance DEF BLACK_PART PBRAppearance {
+                            baseColor 0 0 0
+                            baseColorMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+                              ]
+                              filtering 5
+                            }
+                            roughnessMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_roughness.jpg"
+                              ]
+                              filtering 5
+                            }
+                            metalness 0
+                            normalMapFactor 0.5
+                            textureTransform TextureTransform {
+                              scale 10 10
+                            }
+                          }
+                          geometry Mesh {
+                            url [
+                              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/cover_motor.obj"
+                            ]
+                          }
+                        }
+                        DEF UPPERARM_SH Shape {
+                          appearance USE GRAY_PART
+                          geometry Mesh {
+                            url [
+                              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/upperarm_sh.obj"
+                            ]
+                          }
+                        }
+                        DEF UPPERARM_INSIDE Shape {
+                          appearance DEF METAL_PART PBRAppearance {
+                            baseColorMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_base_color.jpg"
+                              ]
+                            }
+                            roughnessMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_roughness.jpg"
+                              ]
+                            }
+                            normalMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_normal.jpg"
+                              ]
+                            }
+                            textureTransform TextureTransform {
+                              scale 20 20
+                            }
+                          }
+                          geometry Mesh {
+                            url [
+                              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/upperarm_inside.obj"
+                            ]
+                          }
+                        }
+                        DEF COVER_ELBOW Shape {
+                          appearance USE METAL_PART
+                          geometry Mesh {
+                            url [
+                              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/cover_elbow.obj"
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                  name "rear left upperarm"
+                  boundingObject DEF UPPERARM_BO Group {
+                    children [
+                      Pose {
+                        translation -0.117011 -0.32073 0.1829
+                        rotation 0.5773496025226483 0.5773516025212714 -0.5773496025226483 -2.094399
+                        children [
+                          Cylinder {
+                            height 0.060377
+                            radius 0.02717
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.117011 -0.25867 0.180358
+                        rotation -0.02498960817355977 0.024989508173527065 0.9993753268740314 1.57142
+                        children [
+                          Box {
+                            size 0.09434 0.060377 0.053208
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.149087 -0.023654 0.007772
+                        rotation 1 0 0 -0.6563753071795864
+                        children [
+                          Box {
+                            size 0.016226 0.177358 0.071698
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.14944 -0.001095 0.048195
+                        rotation -0.8708125987213743 0.4653767855500056 -0.1584609269797163 0.745474
+                        children [
+                          Box {
+                            size 0.004528 0.173585 0.015094
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.143963 -0.142325 0.149419
+                        rotation -0.8073442439173019 0.5785731748002897 -0.11596703503631382 0.7821
+                        children [
+                          Box {
+                            size 0.004528 0.173585 0.015094
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.143376 -0.16295 0.113632
+                        rotation -0.9969148110595092 0.025671095134680254 0.07417448594206484 0.648238
+                        children [
+                          Box {
+                            size 0.016226 0.173585 0.071698
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.113992 -0.21476 0.154045
+                        rotation 1 0 0 -0.6563753071795864
+                        children [
+                          Box {
+                            size 0.054717 0.098113 0.064151
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.113238 -0.119427 0.086296
+                        rotation 1 0 0 -2.227175
+                        children [
+                          Cylinder {
+                            height 0.150943
+                            radius 0.028679
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.113238 -0.04459 0.028636
+                        rotation 1 0 0 -2.227175
+                        children [
+                          Cylinder {
+                            height 0.041509
+                            radius 0.037736
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.113738 -0.02284 -0.046726
+                        rotation 1 0 0 -0.6563753071795864
+                        children [
+                          Box {
+                            size 0.061509 0.069811 0.011321
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.073615 -0.00019 -0.000689
+                        rotation 0.5773496025226483 0.5773516025212714 -0.5773496025226483 -2.094399
+                        children [
+                          Cylinder {
+                            height 0.037736
+                            radius 0.04
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.115879 0.008331 -0.011344
+                        rotation 1 0 0 -2.227175
+                        children [
+                          Cylinder {
+                            height 0.086792
+                            radius 0.033962
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.12154 0.053961 -0.047932
+                        rotation 1 0 0 -0.6563753071795864
+                        children [
+                          Box {
+                            size 0.064151 0.003774 0.071698
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.12003 0.073308 -0.006499
+                        rotation 1 0 0 0.0136247
+                        children [
+                          Box {
+                            size 0.060377 0.007547 0.022642
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.117011 -0.13635 0.154336
+                        rotation 1 0 0 0.99
+                        children [
+                          Box {
+                            size 0.049057 0.005283 0.169811
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation -0.083111 -0.31378 0.182934
+                        rotation -0.03814818654281376 0.03814838654274321 -0.9985436477529064 -1.572255307179586
+                        children [
+                          Box {
+                            size 0.044 0.008 0.0387
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                  physics Physics {
+                    density -1
+                    mass 0.934886792
+                    centerOfMass [
+                      -0.11714932354424774 -0.12276425577719878 0.08285389390894864
+                    ]
+                    inertiaMatrix [
+                      0.1012996403729267 0.09841956052568711 0.06647528278171203
+                      0.02395093549986319 -0.04470786622876792 0.03546126467713879
+                    ]
+                  }
+                }
+              }
+              Pose {
+                translation 0.0528 -1.6623 0.8233
+                children [
+                  DEF MOTOR_SUPPORT Shape {
+                    appearance USE BLACK_PART
+                    geometry Mesh {
+                      url [
+                        "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/motor_support.obj"
+                      ]
+                    }
+                  }
+                  DEF MOTOR Shape {
+                    appearance USE GRAY_PART
+                    geometry Mesh {
+                      url [
+                        "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/motor.obj"
+                      ]
+                    }
+                  }
+                  DEF MOTOR_RING Shape {
+                    appearance USE METAL_PART
+                    geometry Mesh {
+                      url [
+                        "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/motor_ring.obj"
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+            name "rear left shoulder"
+            boundingObject DEF SHOULDER_BO Group {
+              children [
+                Pose {
+                  translation 0.004874 0.000873 -0.000643
+                  children [
+                    Box {
+                      size 0.086792 0.124528 0.120755
+                    }
+                  ]
+                }
+                Pose {
+                  translation -0.006447 0.000873 -0.000643
+                  children [
+                    Box {
+                      size 0.098113 0.098113 0.098113
+                    }
+                  ]
+                }
+                Pose {
+                  translation -0.058145 0.000873 -0.000643
+                  rotation 0.5773496025226483 0.5773516025212714 -0.5773496025226483 -2.094399
+                  children [
+                    Cylinder {
+                      height 0.006038
+                      radius 0.047925
+                    }
+                  ]
+                }
+              ]
+            }
+            physics Physics {
+              density -1
+              mass 2.131962264
+              centerOfMass [
+                0.000643 0.000985966468486107 0.000873
+              ]
+              inertiaMatrix [
+                0.0042655393382746935 0.004840458991120049 0.004164087201524784
+                -1.4537990385136328e-06 -1.2872309568206006e-06 -1.9737366790868247e-06
+              ]
+            }
+          }
+        }
+      ]
+    }
+    DEF REAR_RIGHT_LEG Pose {
+      translation -0.3084 0 0.0117
+      rotation 0.5773502691803881 -0.5773542691822531 -0.5773462691785233 2.094389
+      children [
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 0 1
+            anchor 0.0528 0.0006 0
+          }
+          device [
+            PositionSensor {
+              name "rear right shoulder abduction sensor"
+            }
+            RotationalMotor {
+              name "rear right shoulder abduction motor"
+              minPosition -0.6
+              maxPosition 0.5
+              maxTorque 100
+            }
+          ]
+          endPoint DEF SHOULDER Solid {
+            translation 0.0528 0.0006 0
+            children [
+              DEF SHOULDER_ROTATION_JOINT HingeJoint {
+                jointParameters HingeJointParameters {
+                  anchor 0 -0.00053 0
+                }
+                device [
+                  PositionSensor {
+                    name "rear right shoulder rotation sensor"
+                  }
+                  RotationalMotor {
+                    name "rear right shoulder rotation motor"
+                    minPosition -1.7
+                    maxPosition 1.7
+                    maxTorque 100
+                  }
+                ]
+                endPoint DEF UPPERARM Solid {
+                  translation 0 -0.00053 0
+                  rotation 1 0 0 0
+                  children [
+                    HingeJoint {
+                      jointParameters HingeJointParameters {
+                        anchor 0.1172 -0.29077 0.2083
+                      }
+                      device [
+                        RotationalMotor {
+                          name "rear right piston motor"
+                        }
+                      ]
+                      endPoint DEF TENDON Solid {
+                        translation -0.0528 -1.17737 1.4317
+                        rotation 1 0 0 -0.5235996938995747
+                        children [
+                          Transform {
+                            scale -1 1 1
+                            children [
+                              Shape {
+                                appearance DEF METAL_PART PBRAppearance {
+                                  baseColorMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_base_color.jpg"
+                                    ]
+                                  }
+                                  roughnessMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_roughness.jpg"
+                                    ]
+                                  }
+                                  normalMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_normal.jpg"
+                                    ]
+                                  }
+                                  textureTransform TextureTransform {
+                                    scale 20 20
+                                  }
+                                }
+                                geometry Mesh {
+                                  url [
+                                    "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/tendon.obj"
+                                  ]
+                                  ccw FALSE
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                    DEF ELBOW_JOINT HingeJoint {
+                      jointParameters HingeJointParameters {
+                        anchor 0.1122 -0.319729 0.182338
+                      }
+                      device [
+                        PositionSensor {
+                          name "rear right elbow sensor"
+                        }
+                        RotationalMotor {
+                          name "rear right elbow motor"
+                          minPosition -0.45
+                          maxPosition 1.6
+                          maxTorque 100
+                        }
+                      ]
+                      endPoint DEF FOREARM Solid {
+                        translation 0.1122 -0.319729 0.182338
+                        rotation 1 0 0 0
+                        children [
+                          TouchSensor {
+                            translation 0.001038 -0.271321 -0.225038
+                            rotation -0.5773489358550934 -0.5773519358547601 0.5773499358549823 2.0944
+                            name "rear right touch sensor"
+                            boundingObject Cylinder {
+                              height 0.039623
+                              radius 0.035094
+                            }
+                          }
+                          Transform {
+                            translation -0.165 -1.342041 0.640962
+                            scale -1 1 1
+                            children [
+                              DEF FOREARM_SH Shape {
+                                appearance DEF GRAY_PART PBRAppearance {
+                                  baseColor 0.0862745 0.0862745 0.0862745
+                                  roughness 1
+                                  roughnessMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_rough_roughness.jpg"
+                                    ]
+                                  }
+                                  metalness 0
+                                  normalMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_rough_normal.jpg"
+                                    ]
+                                  }
+                                  textureTransform TextureTransform {
+                                    scale 20 20
+                                  }
+                                }
+                                geometry Mesh {
+                                  url [
+                                    "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/forearm_sh.obj"
+                                  ]
+                                  ccw FALSE
+                                }
+                              }
+                              DEF FOOT Shape {
+                                appearance USE GRAY_PART
+                                geometry Mesh {
+                                  url [
+                                    "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/foot.obj"
+                                  ]
+                                  ccw FALSE
+                                }
+                              }
+                              DEF FOOT_RUBBER Shape {
+                                appearance PBRAppearance {
+                                  baseColor 0.0980392 0.0980392 0.0980392
+                                  baseColorMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_padded_base_color.jpg"
+                                    ]
+                                  }
+                                  roughness 1
+                                  roughnessMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_padded_roughness.jpg"
+                                    ]
+                                  }
+                                  metalness 0
+                                  metalnessMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_padded_metalness.jpg"
+                                    ]
+                                  }
+                                  normalMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_padded_normal.jpg"
+                                    ]
+                                  }
+                                  occlusionMap ImageTexture {
+                                    url [
+                                      "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/plastic/plastic_padded_occlusion.jpg"
+                                    ]
+                                  }
+                                  textureTransform TextureTransform {
+                                    center 0.032 0
+                                    scale 14 24
+                                  }
+                                }
+                                geometry Mesh {
+                                  url [
+                                    "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/foot_rubber.obj"
+                                  ]
+                                  ccw FALSE
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                        name "rear right forearm"
+                        boundingObject DEF FOREARM_BO Group {
+                          children [
+                            Pose {
+                              translation 0.001038 -0.271321 -0.225038
+                              rotation -0.5773489358550934 -0.5773519358547601 0.5773499358549823 2.0944
+                              children [
+                                Cylinder {
+                                  height 0.039623
+                                  radius 0.035094
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.227421 -0.230239
+                              rotation -1 0 0 0.947675
+                              children [
+                                Box {
+                                  size 0.037736 0.006038 0.041509
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.232272 -0.198255
+                              rotation 1 0 0 -0.0931852938995747
+                              children [
+                                Box {
+                                  size 0.037736 0.045283 0.006792
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.205751 -0.206348
+                              rotation 1 0 0 0.616815
+                              children [
+                                Box {
+                                  size 0.025283 0.022642 0.020755
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.168611 -0.18111
+                              rotation 1 0 0 -2.513185307179586
+                              children [
+                                Box {
+                                  size 0.019245 0.071698 0.017358
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.125111 -0.148236
+                              rotation -1 0 0 -0.6636253071795863
+                              children [
+                                Box {
+                                  size 0.021887 0.037736 0.018491
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.100861 -0.126163
+                              rotation -1 0 0 -0.7604153071795858
+                              children [
+                                Box {
+                                  size 0.026415 0.030189 0.021132
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.084241 -0.106843
+                              rotation 1 0 0 0.867225
+                              children [
+                                Box {
+                                  size 0.032453 0.022642 0.024528
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.068551 -0.08661
+                              rotation 1 0 0 0.907225
+                              children [
+                                Box {
+                                  size 0.037736 0.033962 0.026415
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.049721 -0.059227
+                              rotation 1 0 0 0.933245
+                              children [
+                                Cylinder {
+                                  height 0.030566
+                                  radius 0.024528
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.034991 -0.038166
+                              rotation 1 0 0 0.937225
+                              children [
+                                Box {
+                                  size 0.038113 0.022642 0.032075
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.022931 -0.021744
+                              rotation 1 0 0 0.937225
+                              children [
+                                Box {
+                                  size 0.031321 0.018868 0.03283
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 -0.010711 -0.006332
+                              rotation -1 0 0 -0.8340353071795858
+                              children [
+                                Box {
+                                  size 0.027925 0.018868 0.03283
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 0.004299 0.006862
+                              rotation -1 0 0 -0.6808453071795864
+                              children [
+                                Box {
+                                  size 0.027547 0.018868 0.034717
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 0.021259 0.019851
+                              rotation -1 0 0 -0.604465307179586
+                              children [
+                                Box {
+                                  size 0.020377 0.026415 0.03434
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 0.019179 -0.009531
+                              rotation 1 0 0 0.494895
+                              children [
+                                Box {
+                                  size 0.010189 0.05283 0.00717
+                                }
+                              ]
+                            }
+                            Pose {
+                              translation 0.001038 0.037459 0.024742
+                              rotation 0.5773496025226483 0.5773516025212714 -0.5773496025226483 -2.094399
+                              children [
+                                Cylinder {
+                                  height 0.019736
+                                  radius 0.021887
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                        physics Physics {
+                          density -1
+                          mass 0.137150943
+                          centerOfMass [
+                            0.0010379999999999999 -0.12989919535771882 -0.12095184442508211
+                          ]
+                          inertiaMatrix [
+                            0.014652279026458286 0.026034033109202114 0.011480093961576602
+                            6.107196767681762e-05 0.012746451515841613 -6.558985205280841e-05
+                          ]
+                        }
+                      }
+                    }
+                    Transform {
+                      translation -0.0528 -1.66177 0.8233
+                      scale -1 1 1
+                      children [
+                        DEF COVER_LEG Shape {
+                          appearance DEF YELLOW_COVER PBRAppearance {
+                            baseColor 0.847059 0.666667 0
+                            baseColorMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+                              ]
+                              filtering 5
+                            }
+                            roughnessMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_roughness.jpg"
+                              ]
+                              filtering 5
+                            }
+                            metalness 0
+                            normalMapFactor 0.5
+                            textureTransform TextureTransform {
+                              scale 10 10
+                            }
+                          }
+                          geometry Mesh {
+                            url [
+                              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/cover_leg.obj"
+                            ]
+                            ccw FALSE
+                          }
+                        }
+                        DEF COVER_MOTOR Shape {
+                          appearance DEF BLACK_PART PBRAppearance {
+                            baseColor 0 0 0
+                            baseColorMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg"
+                              ]
+                              filtering 5
+                            }
+                            roughnessMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_roughness.jpg"
+                              ]
+                              filtering 5
+                            }
+                            metalness 0
+                            normalMapFactor 0.5
+                            textureTransform TextureTransform {
+                              scale 10 10
+                            }
+                          }
+                          geometry Mesh {
+                            url [
+                              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/cover_motor.obj"
+                            ]
+                            ccw FALSE
+                          }
+                        }
+                        DEF UPPERARM_SH Shape {
+                          appearance USE GRAY_PART
+                          geometry Mesh {
+                            url [
+                              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/upperarm_sh.obj"
+                            ]
+                            ccw FALSE
+                          }
+                        }
+                        DEF UPPERARM_INSIDE Shape {
+                          appearance DEF METAL_PART PBRAppearance {
+                            baseColorMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_base_color.jpg"
+                              ]
+                            }
+                            roughnessMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_roughness.jpg"
+                              ]
+                            }
+                            normalMap ImageTexture {
+                              url [
+                                "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_normal.jpg"
+                              ]
+                            }
+                            textureTransform TextureTransform {
+                              scale 20 20
+                            }
+                          }
+                          geometry Mesh {
+                            url [
+                              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/upperarm_inside.obj"
+                            ]
+                            ccw FALSE
+                          }
+                        }
+                        DEF COVER_ELBOW Shape {
+                          appearance USE METAL_PART
+                          geometry Mesh {
+                            url [
+                              "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/cover_elbow.obj"
+                            ]
+                            ccw FALSE
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                  name "rear right upperarm"
+                  boundingObject DEF UPPERARM_BO Group {
+                    children [
+                      Pose {
+                        translation 0.117011 -0.32073 0.1829
+                        rotation 0.5773496025226483 0.5773516025212714 -0.5773496025226483 -2.094399
+                        children [
+                          Cylinder {
+                            height 0.060377
+                            radius 0.02717
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.117011 -0.25867 0.180358
+                        rotation -0.02498960817355977 0.024989508173527065 0.9993753268740314 1.57142
+                        children [
+                          Box {
+                            size 0.09434 0.060377 0.053208
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.149087 -0.023654 0.007772
+                        rotation 1 0 0 -0.6563753071795864
+                        children [
+                          Box {
+                            size 0.016226 0.177358 0.071698
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.14944 -0.001095 0.048195
+                        rotation -0.8708125987213743 0.4653767855500056 -0.1584609269797163 0.745474
+                        children [
+                          Box {
+                            size 0.004528 0.173585 0.015094
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.143963 -0.142325 0.149419
+                        rotation -0.8073442439173019 0.5785731748002897 -0.11596703503631382 0.7821
+                        children [
+                          Box {
+                            size 0.004528 0.173585 0.015094
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.143376 -0.16295 0.113632
+                        rotation -0.9969148110595092 0.025671095134680254 0.07417448594206484 0.648238
+                        children [
+                          Box {
+                            size 0.016226 0.173585 0.071698
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.113992 -0.21476 0.154045
+                        rotation 1 0 0 -0.6563753071795864
+                        children [
+                          Box {
+                            size 0.054717 0.098113 0.064151
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.113238 -0.119427 0.086296
+                        rotation 1 0 0 -2.227175
+                        children [
+                          Cylinder {
+                            height 0.150943
+                            radius 0.028679
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.113238 -0.04459 0.028636
+                        rotation 1 0 0 -2.227175
+                        children [
+                          Cylinder {
+                            height 0.041509
+                            radius 0.037736
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.113738 -0.02284 -0.046726
+                        rotation 1 0 0 -0.6563753071795864
+                        children [
+                          Box {
+                            size 0.061509 0.069811 0.011321
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.073615 -0.00019 -0.000689
+                        rotation 0.5773496025226483 0.5773516025212714 -0.5773496025226483 -2.094399
+                        children [
+                          Cylinder {
+                            height 0.037736
+                            radius 0.04
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.115879 0.008331 -0.011344
+                        rotation 1 0 0 -2.227175
+                        children [
+                          Cylinder {
+                            height 0.086792
+                            radius 0.033962
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.12154 0.053961 -0.047932
+                        rotation 1 0 0 -0.6563753071795864
+                        children [
+                          Box {
+                            size 0.064151 0.003774 0.071698
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.12003 0.073308 -0.006499
+                        rotation 1 0 0 0.0136247
+                        children [
+                          Box {
+                            size 0.060377 0.007547 0.022642
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.117011 -0.13635 0.154336
+                        rotation 1 0 0 0.99
+                        children [
+                          Box {
+                            size 0.049057 0.005283 0.169811
+                          }
+                        ]
+                      }
+                      Pose {
+                        translation 0.083111 -0.31378 0.182934
+                        rotation -0.03814818654281376 0.03814838654274321 -0.9985436477529064 -1.572255307179586
+                        children [
+                          Box {
+                            size 0.044 0.008 0.0387
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                  physics Physics {
+                    density -1
+                    mass 0.934886792
+                    centerOfMass [
+                      0.11714932354424774 -0.12276425577719878 0.08285389390894864
+                    ]
+                    inertiaMatrix [
+                      0.1012996403729267 0.09841956052568711 0.06647528278171203
+                      -0.02395093549986319 -0.04470786622876792 -0.03546126467713879
+                    ]
+                  }
+                }
+              }
+              Transform {
+                translation -0.0528 -1.6623 0.8233
+                scale -1 1 1
+                children [
+                  DEF MOTOR_SUPPORT Shape {
+                    appearance USE BLACK_PART
+                    geometry Mesh {
+                      url [
+                        "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/motor_support.obj"
+                      ]
+                      ccw FALSE
+                    }
+                  }
+                  DEF MOTOR Shape {
+                    appearance USE GRAY_PART
+                    geometry Mesh {
+                      url [
+                        "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/motor.obj"
+                      ]
+                      ccw FALSE
+                    }
+                  }
+                  DEF MOTOR_RING Shape {
+                    appearance USE METAL_PART
+                    geometry Mesh {
+                      url [
+                        "C:/Users/alecp/Documents/spot-webots-cloud/protos/meshes/motor_ring.obj"
+                      ]
+                      ccw FALSE
+                    }
+                  }
+                ]
+              }
+            ]
+            name "rear right shoulder"
+            boundingObject DEF SHOULDER_BO Group {
+              children [
+                Pose {
+                  translation -0.004874 0.000873 -0.000643
+                  children [
+                    Box {
+                      size 0.086792 0.124528 0.120755
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0.006447 0.000873 -0.000643
+                  children [
+                    Box {
+                      size 0.098113 0.098113 0.098113
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0.058145 0.000873 -0.000643
+                  rotation 0.5773496025226483 0.5773516025212714 -0.5773496025226483 -2.094399
+                  children [
+                    Cylinder {
+                      height 0.006038
+                      radius 0.047925
+                    }
+                  ]
+                }
+              ]
+            }
+            physics Physics {
+              density -1
+              mass 2.131962264
+              centerOfMass [
+                0.000643 -0.000985966468486107 0.000873
+              ]
+              inertiaMatrix [
+                0.0042655393382746935 0.004840458991120049 0.004164087201524784
+                1.4537990385136328e-06 -1.2872309568206006e-06 1.9737366790868247e-06
+              ]
+            }
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.027 0 0.1118
+      rotation 0.5773502691803881 -0.5773542691822531 -0.5773462691785233 2.094389
+      children [
+        Lidar {
+          translation 0 0.11 0.09
+          rotation 0.577349935856137 0.577349935856137 0.5773509358560258 -2.09439
+          children [
+            Pose {
+              rotation 0 0 1 3.14159
+              children [
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0 0 0
+                    roughness 0.5
+                    metalness 0.2
+                  }
+                  geometry Mesh {
+                    url [
+                      "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/devices/sick/protos/meshes/sick_s300_black.dae"
+                    ]
+                  }
+                }
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0 0 0
+                  }
+                  geometry Mesh {
+                    url [
+                      "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/devices/sick/protos/meshes/sick_s300_glass.dae"
+                    ]
+                  }
+                }
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.969 0.8 0.016
+                    roughness 0.5
+                    metalness 0.2
+                  }
+                  geometry Mesh {
+                    url [
+                      "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/devices/sick/protos/meshes/sick_s300_yellow.dae"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+          name "SickS300"
+          boundingObject Group {
+            children [
+              Pose {
+                translation -0.0315 0 -0.0712
+                rotation -0.5773516025189619 0.5773476025217157 0.5773516025189619 -2.094405
+                children [
+                  Shape {
+                    geometry Box {
+                      size 0.0995 0.0874 0.0443
+                    }
+                  }
+                ]
+              }
+              Pose {
+                translation 0 0 -0.0671
+                children [
+                  Shape {
+                    geometry Cylinder {
+                      height 0.0956
+                      radius 0.0498
+                    }
+                  }
+                ]
+              }
+              Cylinder {
+                height 0.068
+                radius 0.047
+                subdivision 16
+              }
+            ]
+          }
+          physics Physics {
+            density -1
+            mass 1.2
+          }
+          horizontalResolution 540
+          fieldOfView 4.71238898038
+          verticalFieldOfView 0.008726646259962964
+          numberOfLayers 2
+          maxRange 30
+          type "rotating"
+        }
+      ]
+    }
+    Pose {
+      translation -0.2 0 0.1118
+      rotation 0.5773502691803881 -0.5773542691822531 -0.5773462691785233 2.094389
     }
   ]
-  middleExtension [
-    SickS300 {
-      translation 0 0.11 0.09
-      rotation 0.577349935856137 0.577349935856137 0.5773509358560258 -2.09439
-      name "SickS300"
-    }
-  ]
+  name "Spot"
+  model "Boston Dynamics - Spot"
+  boundingObject DEF BODY_BO Group {
+    children [
+      Pose {
+        translation 0.462094 0 -0.000232
+        rotation -0.47132436360685553 0.4713303636114843 0.7454535750859732 -1.860413
+        children [
+          Box {
+            size 0.192453 0.177358 0.043396
+          }
+        ]
+      }
+      Pose {
+        translation 0.477932 0 0.084013
+        rotation -0.49632911961483595 0.49633511961628196 0.7122561716530458 -1.903773
+        children [
+          Box {
+            size 0.192453 0.018113 0.08717
+          }
+        ]
+      }
+      Pose {
+        translation 0.451833 0 0.041304
+        children [
+          Box {
+            size 0.037736 0.192453 0.102642
+          }
+        ]
+      }
+      Pose {
+        translation 0.031113 0 0.018833
+        children [
+          Box {
+            size 0.535849 0.222642 0.189434
+          }
+        ]
+      }
+      Pose {
+        translation 0.376019 0 0.107135
+        children [
+          Box {
+            size 0.158491 0.166038 0.013208
+          }
+        ]
+      }
+      Pose {
+        translation 0.363578 0 -0.079657
+        rotation -0.5708568772854792 0.5708608772846193 0.590118873144815 -2.075336
+        children [
+          Box {
+            size 0.166038 0.013208 0.124528
+          }
+        ]
+      }
+      Pose {
+        translation -0.319453 0 0.107135
+        children [
+          Box {
+            size 0.158491 0.166038 0.013208
+          }
+        ]
+      }
+      Pose {
+        translation -0.313025 0 -0.064563
+        children [
+          Box {
+            size 0.14717 0.166038 0.013208
+          }
+        ]
+      }
+      Pose {
+        translation -0.120195 0.111629 0.074886
+        rotation 0.47707393267127624 -0.7381088958318061 -0.4770699326718407 1.869899
+        children [
+          Box {
+            size 0.030189 0.064528 0.182264
+          }
+        ]
+      }
+      Pose {
+        translation -0.120195 -0.111629 0.074886
+        rotation 0.6431209250246454 -0.4156859515391267 -0.643117925024995 2.353682
+        children [
+          Box {
+            size 0.030189 0.064528 0.182264
+          }
+        ]
+      }
+      Pose {
+        translation -0.427377 0 0.059588
+        children [
+          Box {
+            size 0.089057 0.192453 0.05283
+          }
+        ]
+      }
+      Pose {
+        translation -0.404 0 0.096611
+        rotation -0.6057652259907549 0.6057692259922471 0.5158411924431041 -2.1891
+        children [
+          Box {
+            size 0.193585 0.003774 0.135849
+          }
+        ]
+      }
+      Pose {
+        translation -0.400585 0 -0.018903
+        children [
+          Box {
+            size 0.04566 0.191698 0.103396
+          }
+        ]
+      }
+      Pose {
+        translation -0.431528 0 -0.008337
+        rotation 0.6475120461970723 -0.647514046197215 -0.40181302866755236 2.377442
+        children [
+          Box {
+            size 0.193585 0.109434 0.037736
+          }
+        ]
+      }
+      Pose {
+        translation -0.28 0 0.121
+        children [
+          Box {
+            size 0.05 0.1 0.02
+          }
+        ]
+      }
+      Pose {
+        translation 0.02 0 0.121
+        children [
+          Box {
+            size 0.05 0.1 0.02
+          }
+        ]
+      }
+    ]
+  }
+  physics Physics {
+    density -1
+    mass 14.40973585
+    centerOfMass [
+      0.022374 0 0.02032
+    ]
+  }
+  controller "spot_controller"
+  supervisor TRUE
+  window "spot_controller"
 }

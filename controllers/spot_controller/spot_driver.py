@@ -17,19 +17,11 @@ motions = {
 }
 
 
-def retract_arm(robot):
-    # Retracted arm initially
-    robot.getDevice("spotarm_2_joint").setPosition(3.1415)
-    robot.getDevice("spotarm_3_joint").setPosition(3.0)
-    robot.getDevice("spotarm_5_joint").setPosition(np.deg2rad(11))
-
-
 class SpotDriver:
     def __init__(self):
         # self.robot = Robot()
         self.robot = Supervisor()
 
-        retract_arm(self.robot)
 
         self.spot_node = self.robot.getFromDef("Spot")
 
@@ -51,50 +43,6 @@ class SpotDriver:
         for motor_name in self.motor_names:
             self.motors.append(self.robot.getDevice(motor_name))
         
-        ### Init ur3e motors
-        self.ur3e_motors=[]
-        self.ur3e_motor_names = [
-            'Slider11',
-            'spotarm_1_joint',
-            'spotarm_2_joint',
-            'spotarm_3_joint',
-            'spotarm_4_joint',
-            'spotarm_5_joint',
-            'spotarm_6_joint'
-        ]
-        for motor_name in self.ur3e_motor_names:
-            self.ur3e_motors.append(self.robot.getDevice(motor_name))
-        self.ur3e_sensors = []
-        self.ur3e_pos = []
-        for idx, sensor_name in enumerate(self.ur3e_motor_names):
-            self.ur3e_sensors.append(
-                self.robot.getDevice(sensor_name + '_sensor')
-            )
-            self.ur3e_sensors[idx].enable(self.timestep)
-            self.ur3e_pos.append(0.)
-
-        ### Init gripper motors
-        self.gripper_motors=[]
-        self.gripper_sensors = []
-        self.gripper_pos = []
-        self.gripper_motor_names = [
-            'gripper_left_finger_joint',
-            'gripper_right_finger_joint'
-        ]
-        for idx, motor_name in enumerate(self.gripper_motor_names):
-            self.gripper_motors.append(self.robot.getDevice(motor_name))
-            self.gripper_sensors.append(self.robot.getDevice(motor_name + '_sensor'))  
-            self.gripper_sensors[idx].enable(self.timestep)
-            self.gripper_pos.append(0.)
-
-        self.remaining_gripper_sensors = []
-        self.remaining_gripper_pos = []
-        self.remaining_gripper_motor_names = [
-        ]
-        for idx, motor_name in enumerate(self.remaining_gripper_motor_names):
-            self.remaining_gripper_sensors.append(self.robot.getDevice(motor_name + '_sensor'))  
-            self.remaining_gripper_sensors[idx].enable(self.timestep)
-            self.remaining_gripper_pos.append(0.)
 
         ## Positional Sensors
         self.motor_sensor_names = [name.replace('motor', 'sensor') for name in self.motor_names]
@@ -115,6 +63,11 @@ class SpotDriver:
         self.touch_fr.enable(self.timestep)
         self.touch_rl.enable(self.timestep)
         self.touch_rr.enable(self.timestep)
+
+        ## LIDAR
+        self.lidar = self.robot.getDevice("SickS300")
+        self.lidar.enable(self.timestep)
+        self.lidar.enablePointCloud()
 
         ## Spot Control
         self.time_step = self.timestep
@@ -216,7 +169,8 @@ class SpotDriver:
         self.pitchd = 0.
         self.yawd = 0.
         self.StepLength = StepLength * linearx
-
+        if self.StepLength == 0.0:
+            self.StepLength = StepLength * abs(lineary)
         # Rotation along vertical axis
         self.YawRate = angularz
         if self.YawRate != 0 and self.StepLength == 0:
@@ -225,19 +179,9 @@ class SpotDriver:
         # Holonomic motions
         self.LateralFraction = np.arctan2(lineary, linearx)
         # forcefully set 0, as output is never 0 if second term in arctan2 is -ve
-        if lineary == 0:
-            self.LateralFraction = 0
-        if self.LateralFraction != 0:
-            if linearx != 0:
-                # change lateral fraction for 2nd and 4th quadrants
-                if linearx > 0 and self.LateralFraction < 0:
-                    self.LateralFraction += np.pi
-                elif linearx < 0 and self.LateralFraction > 0:
-                    self.LateralFraction -= np.pi
-                self.StepLength = StepLength * lineary * np.sign(linearx)
-            else:
-                # for sideway motion
-                self.StepLength = StepLength * abs(lineary)
+        self.LateralFraction = np.arctan2(lineary, abs(linearx))
+        if linearx < 0:
+            self.LateralFraction *= -1
 
         self.StepVelocity = StepVelocity
         self.ClearanceHeight = ClearanceHeight
