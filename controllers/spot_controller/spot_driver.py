@@ -67,7 +67,6 @@ class SpotDriver:
         ## LIDAR
         self.lidar = self.robot.getDevice("SickS300")
         self.lidar.enable(self.timestep)
-        self.lidar.enablePointCloud()
 
         ## Spot Control
         self.time_step = self.timestep
@@ -439,3 +438,6 @@ class SpotDriver:
 
     def stop_moving(self, move_time):
         self.move_in_direction_for_duration(0.0, 0.0, 0.0, move_time)
+
+    def get_lidar_image(self):
+        return self.lidar.getRangeImage();
