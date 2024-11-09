@@ -17,6 +17,20 @@ motions = {
 }
 
 
+def inverse_lerp(a, b, v):
+    return (v - a) / (b - a)
+
+def lerp(a, b, t):
+        return (1.0 - t) * a + b * t
+
+DOGZILLA_FORWARD_TRAVERSAL = 25
+DOGZILLA_STRAFE_TRAVERSAL = 18
+DOGZILLA_TURN_TRAVERSAL = 100
+
+def remap(i_min, i_max, o_min, o_max, v):
+    t = inverse_lerp(i_min, i_max, v)
+    return lerp(o_min, o_max, t)
+
 class SpotDriver:
     def __init__(self):
         # self.robot = Robot()
@@ -412,6 +426,29 @@ class SpotDriver:
             self.__spot_inverse_control()
             self.__model_cb()
 
+
+
+    def forward(self, step):
+        self._cmd_vel(remap(0, DOGZILLA_FORWARD_TRAVERSAL, 0, 0.5, step), 0, 0)
+
+    def back(self, step):
+        self._cmd_vel(-remap(0, DOGZILLA_FORWARD_TRAVERSAL, 0, 0.5, step), 0, 0)
+
+    def left(self, step):
+        self._cmd_vel(0, remap(0, DOGZILLA_STRAFE_TRAVERSAL, 0, 0.5, step), 0)
+
+    def right(self, step):
+        self._cmd_vel(0, -remap(0, DOGZILLA_STRAFE_TRAVERSAL, 0, 0.5, step), 0)
+
+    def turnleft(self, step):
+        self._cmd_vel(0, 0, remap(0, DOGZILLA_TURN_TRAVERSAL, 0, 0.5, step))
+
+    def turnright(self, step):
+        self._cmd_vel(0, 0, -remap(0, DOGZILLA_TURN_TRAVERSAL, 0, 0.5, step))
+
+    def stop(self):
+        self._cmd_vel(0, 0, 0)
+
     def move_forward(self, move_time):
         self.move_in_direction_for_duration(0.5, 0.0, 0.0, move_time)
 
@@ -440,4 +477,10 @@ class SpotDriver:
         self.move_in_direction_for_duration(0.0, 0.0, 0.0, move_time)
 
     def get_lidar_image(self):
-        return self.lidar.getRangeImage();
+        return self.lidar.getRangeImage()
+
+    def get_timestep(self):
+        return self.timestep
+
+    def step(self, timestep):
+       return self.robot.step(timestep)
