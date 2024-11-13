@@ -430,24 +430,38 @@ class SpotDriver:
 
     def forward(self, step):
         self._cmd_vel(remap(0, DOGZILLA_FORWARD_TRAVERSAL, 0, 0.5, step), 0, 0)
+        self.__spot_inverse_control()
+        self.__model_cb()
 
     def back(self, step):
         self._cmd_vel(-remap(0, DOGZILLA_FORWARD_TRAVERSAL, 0, 0.5, step), 0, 0)
+        self.__spot_inverse_control()
+        self.__model_cb()
 
     def left(self, step):
         self._cmd_vel(0, remap(0, DOGZILLA_STRAFE_TRAVERSAL, 0, 0.5, step), 0)
+        self.__spot_inverse_control()
+        self.__model_cb()
 
     def right(self, step):
         self._cmd_vel(0, -remap(0, DOGZILLA_STRAFE_TRAVERSAL, 0, 0.5, step), 0)
+        self.__spot_inverse_control()
+        self.__model_cb()
 
     def turnleft(self, step):
         self._cmd_vel(0, 0, remap(0, DOGZILLA_TURN_TRAVERSAL, 0, 0.5, step))
+        self.__spot_inverse_control()
+        self.__model_cb()
 
     def turnright(self, step):
         self._cmd_vel(0, 0, -remap(0, DOGZILLA_TURN_TRAVERSAL, 0, 0.5, step))
+        self.__spot_inverse_control()
+        self.__model_cb()
 
     def stop(self):
         self._cmd_vel(0, 0, 0)
+        self.__spot_inverse_control()
+        self.__model_cb()
 
     def move_forward(self, move_time):
         self.move_in_direction_for_duration(0.5, 0.0, 0.0, move_time)

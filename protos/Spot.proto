@@ -9,6 +9,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/MattePaint.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/PerforatedMetal.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/BrushedAluminium.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/devices/sick/protos/SickS300.proto"
 EXTERNPROTO "SpotLeg.proto"
 
 PROTO Spot [
@@ -16,7 +17,7 @@ PROTO Spot [
   field SFRotation  rotation         0 0 1 0                   # Is `Transform.rotation`.
   field SFString    name             "Spot"                    # Is `Solid.name`.
   field SFString    model            "Boston Dynamics - Spot"  # Is `Robot.model`.
-  field SFString    controller       "spot_moving_demo"        # Is `Robot.controller`.
+  field SFString    controller       "spot_controller"        # Is `Robot.controller`.
   field MFString    controllerArgs   []                        # Is `Robot.controllerArgs`.
   field SFString    window           "<generic>"               # Is `Robot.window`.
   field SFString    customData       ""                        # Is `Robot.customData`.
