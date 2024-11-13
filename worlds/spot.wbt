@@ -10,8 +10,8 @@ WorldInfo {
   title "Spot_Maze"
 }
 Viewpoint {
-  orientation -0.22111396764856026 -0.15458860520907072 0.9629179489708485 4.552969459161523
-  position 7.128750211253756 8.222539759519558 3.9025538333321976
+  orientation -0.19235386763411647 -0.18936195434836897 0.9628821526290551 4.567445374771509
+  position 7.356121184103538 6.964732482510161 3.347502531458938
 }
 TexturedBackground {
   texture "factory"
@@ -4299,8 +4299,8 @@ DEF Spot Robot {
           horizontalResolution 540
           fieldOfView 4.71238898038
           verticalFieldOfView 0.008726646259962964
-          numberOfLayers 2
-          maxRange 30
+          numberOfLayers 1
+          maxRange 5
           type "rotating"
         }
       ]
